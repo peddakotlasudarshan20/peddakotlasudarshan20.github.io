@@ -611,10 +611,22 @@ body.cursor-active #cur-label { opacity: 1; }
   color: var(--accent);
 }
 .sk-items { display: flex; flex-direction: column; gap: 12px; }
-.sk-item { display: flex; flex-direction: column; gap: 6px; }
+.sk-item { display: flex; flex-direction: column; gap: 10px; }
+.sk-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
 .sk-name { font-family: var(--font-mono); font-size: 12px; color: var(--text); }
+.sk-value {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--muted);
+  letter-spacing: 0.04em;
+}
 .sk-bar {
-  height: 2px;
+  height: 4px;
   background: var(--dim);
   border-radius: 100px;
   overflow: hidden;
@@ -755,10 +767,16 @@ body.cursor-active #cur-label { opacity: 1; }
   align-items: start;
   border: 1px solid var(--border);
   padding: 40px 40px 40px 32px;
-  background: var(--surface);
-  transition: border-color .3s, background .3s;
+  background: rgba(255,255,255,0.04);
+  border-radius: 24px;
+  box-shadow: 0 28px 60px rgba(0,0,0,0.18);
+  transition: border-color .3s, background .3s, transform .3s ease;
   position: relative;
   overflow: hidden;
+  transform: translateZ(0);
+}
+.proj-item:hover {
+  transform: translateY(-3px);
 }
 .proj-item::before {
   content: '';
@@ -1279,6 +1297,13 @@ body.cursor-active #cur-label { opacity: 1; }
 
   .contact-layout { grid-template-columns: 1fr; gap: 48px; }
   .cf-row { grid-template-columns: 1fr; }
+
+  #cur-dot, #cur-ring, #cur-label {
+    display: none;
+  }
+  body {
+    cursor: auto;
+  }
 
   .footer-top { flex-wrap: wrap; gap: 24px; }
   .ft-links { display: none; }

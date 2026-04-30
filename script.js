@@ -204,7 +204,7 @@ function initTyping() {
   if (!el) return;
 
   const phrases = [
-    "Full Stack Developer",
+    "Web Developer",
     "UI/UX Engineer",
     "MERN Stack Dev",
     "AI Tool Builder",
