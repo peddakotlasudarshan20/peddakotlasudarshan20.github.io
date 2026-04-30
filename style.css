@@ -856,6 +856,38 @@ body.cursor-active #cur-label { opacity: 1; }
 }
 .pi-link:hover { gap: 10px; }
 
+/* Global box-sizing and overflow */
+*, *::before, *::after { box-sizing: border-box; }
+html, body { overflow-x: hidden; }
+
+/* Ensure text wraps */
+body, p, .pi-content p, .about-text-block p, .hero-desc {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+/* Mobile fixes */
+@media (max-width: 768px) {
+  /* Project cards */
+  .proj-item {
+    width: 100% !important;
+    max-width: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    padding: 16px !important;
+    margin: 0 auto;
+    transform: none !important;
+  }
+  .proj-item .pi-visual, .proj-item .pi-content {
+    width: 100%;
+  }
+  /* Buttons */
+  .btn-primary, .btn-outline, .pi-link {
+    width: 100%;
+    max-width: 100%;
+  }
+}
+
 /* -------------------------------------------------
    Mobile‑First Responsive Design (Full Implementation)
    ------------------------------------------------- */
