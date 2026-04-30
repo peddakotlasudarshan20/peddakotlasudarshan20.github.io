@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sudarshan Peddakotla — Full Stack Developer</title>
+  <meta name="description" content="Full Stack Developer & UI/UX Engineer. Building performant web apps with MERN stack, AI integrations, and pixel-perfect interfaces."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,400;12..96,500;12..96,700;12..96,800&family=JetBrains+Mono:wght@300;400;500&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+  <!-- NOISE OVERLAY -->
+  <div class="noise"></div>
+
+  <!-- LOADER -->
+  <div id="loader">
+    <div class="ld-inner">
+      <div class="ld-line"></div>
+      <div class="ld-text"><span class="ld-count" id="ldCount">0</span><span class="ld-pct">%</span></div>
+      <div class="ld-bar-track"><div class="ld-bar" id="ldBar"></div></div>
+      <p class="ld-label">Initializing portfolio</p>
+    </div>
+  </div>
+
+  <!-- CURSOR -->
+  <div id="cur-dot"></div>
+  <div id="cur-ring"></div>
+  <div id="cur-label"></div>
+
+  <!-- NAV -->
+  <nav id="nav">
+    <a href="#hero" class="nav-brand">
+      <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+        <rect width="32" height="32" rx="8" fill="#00ff87" fill-opacity="0.1" stroke="#00ff87" stroke-width="1"/>
+        <text x="5" y="22" font-family="JetBrains Mono" font-weight="700" font-size="13" fill="#00ff87">PS</text>
+      </svg>
+    </a>
+    <div class="nav-links" id="navLinks">
+      <a href="#about" class="nl" data-num="01">About</a>
+      <a href="#skills" class="nl" data-num="02">Skills</a>
+      <a href="#experience" class="nl" data-num="03">Experience</a>
+      <a href="#projects" class="nl" data-num="04">Projects</a>
+      <a href="#activities" class="nl" data-num="05">Activities</a>
+      <a href="#contact" class="nl contact-nl">Contact</a>
+    </div>
+    <button class="nav-hamburger" id="navHam" aria-label="Menu">
+      <span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#about" class="mm-link">01 — About</a>
+    <a href="#skills" class="mm-link">02 — Skills</a>
+    <a href="#experience" class="mm-link">03 — Experience</a>
+    <a href="#projects" class="mm-link">04 — Projects</a>
+    <a href="#activities" class="mm-link">05 — Activities</a>
+    <a href="#contact" class="mm-link">06 — Contact</a>
+  </div>
+
+  <!-- HERO -->
+  <section id="hero">
+    <canvas id="heroCanvas"></canvas>
+    <div class="hero-grid-overlay"></div>
+    <div class="hero-inner">
+      <div class="hero-eyebrow">
+        <span class="dot-pulse"></span>
+        Available for opportunities
+      </div>
+      <h1 class="hero-name">
+        <span class="hn-line" data-text="Peddakotla">Peddakotla</span>
+        <span class="hn-line accent" data-text="Sudarshan">Sudarshan</span>
+      </h1>
+      <div class="hero-role-wrap">
+        <span class="role-prefix">→ </span>
+        <span id="typed" class="typed-el"></span>
+        <span class="typed-cursor">_</span>
+      </div>
+      <p class="hero-desc">
+        Full Stack Developer & UI/UX Engineer crafting performant,<br class="br-desk"/>
+        scalable web applications from Dharmavaram, AP.
+      </p>
+      <div class="hero-actions">
+        <a href="#projects" class="btn-primary">
+          <span>View Work</span>
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a href="#contact" class="btn-outline">Let's Connect</a>
+      </div>
+      <div class="hero-meta">
+        <div class="hm-item">
+          <span class="hm-num">94.16<em>%</em></span>
+          <span class="hm-label">Diploma Score</span>
+        </div>
+        <div class="hm-divider"></div>
+        <div class="hm-item">
+          <span class="hm-num">1<em>st</em></span>
+          <span class="hm-label">Semester Rank</span>
+        </div>
+        <div class="hm-divider"></div>
+        <div class="hm-item">
+          <span class="hm-num">5<em>+</em></span>
+          <span class="hm-label">Projects Built</span>
+        </div>
+        <div class="hm-divider"></div>
+        <div class="hm-item">
+          <span class="hm-num">6<em>mo</em></span>
+          <span class="hm-label">Industry Exp.</span>
+        </div>
+      </div>
+    </div>
+    <div class="hero-scroll">
+      <div class="scroll-line"></div>
+      <span>Scroll</span>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="section">
+    <div class="container">
+      <div class="sec-header">
+        <span class="sec-num">01</span>
+        <h2 class="sec-title">About Me</h2>
+      </div>
+      <div class="about-layout">
+        <div class="about-left">
+          <div class="avatar-block">
+            <div class="avatar-canvas">
+              <div class="av-ring av-ring-1"></div>
+              <div class="av-ring av-ring-2"></div>
+              <div class="av-ring av-ring-3"></div>
+              <div class="av-core">
+                <span>PS</span>
+              </div>
+            </div>
+            <div class="av-badge">
+              <span class="av-b-dot"></span>
+              Open to Work
+            </div>
+          </div>
+          <div class="about-links">
+            <a href="https://linkedin.com/in/sudarshan-peddakotla-6851052a7" target="_blank" class="al-btn" data-cursor-label="LinkedIn">
+              <svg viewBox="0 0 24 24" fill="currentColor" width="14"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+              /sudarshan-peddakotla
+            </a>
+            <a href="https://github.com/PeddakotlaSudarshan" target="_blank" class="al-btn" data-cursor-label="GitHub">
+              <svg viewBox="0 0 24 24" fill="currentColor" width="14"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+              /PeddakotlaSudarshan
+            </a>
+            <a href="mailto:sudarshanpeddakotla@gmail.com" class="al-btn" data-cursor-label="Email">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="14"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 7L2 7"/></svg>
+              sudarshanpeddakotla@gmail.com
+            </a>
+          </div>
+        </div>
+        <div class="about-right">
+          <div class="about-text-block">
+            <p class="at-lead">I'm a <strong>Full Stack Developer</strong> who graduated top of my class in Computer Engineering — <em>94.16%</em>, First Rank in two semesters.</p>
+            <p>During my 6-month internship at <strong>Codeon Technologies</strong>, I built and shipped production-grade responsive web applications, integrated RESTful APIs, and applied real-world UI/UX principles to live projects.</p>
+            <p>I work across the full stack — from designing accessible component systems to architecting MERN backends and integrating Firebase. I've also built AI-powered tools using Python and NLP, and competed in Google's Agentic Premier League hackathon (GDG Hyderabad), shipping two projects under pressure.</p>
+            <p>Outside code, I'm a <strong>National Integration Camp alumnus</strong> (NSS, Jabalpur) and have led community initiatives — blood donation drives, Swachh Bharat campaigns, and inter-college representation.</p>
+          </div>
+          <div class="about-facts">
+            <div class="af-item">
+              <span class="af-icon">📍</span>
+              <span>Dharmavaram, Andhra Pradesh</span>
+            </div>
+            <div class="af-item">
+              <span class="af-icon">🎓</span>
+              <span>Govt. Polytechnic Dharmavaram — 2024</span>
+            </div>
+            <div class="af-item">
+              <span class="af-icon">💼</span>
+              <span>Ex-Intern @ Codeon Technologies</span>
+            </div>
+            <div class="af-item">
+              <span class="af-icon">📞</span>
+              <a href="tel:+917675869093">+91 76758 69093</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills" class="section section-alt">
+    <div class="container">
+      <div class="sec-header">
+        <span class="sec-num">02</span>
+        <h2 class="sec-title">Technical Stack</h2>
+      </div>
+      <p class="sec-sub">Technologies I use to bring ideas from concept to production.</p>
+
+      <div class="skills-constellation">
+        <!-- Languages -->
+        <div class="sk-group reveal-item" data-delay="0">
+          <div class="sk-group-label">
+            <span class="sg-icon">
+              <svg viewBox="0 0 20 20" fill="none" width="16"><path d="M3 6l4-4 4 4M7 2v16M13 14l4 4-4 4M17 18H1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            Languages
+          </div>
+          <div class="sk-items">
+            <div class="sk-item" data-level="90">
+              <span class="sk-name">Python</span>
+              <div class="sk-bar"><div class="sk-fill" data-w="90"></div></div>
+            </div>
+            <div class="sk-item" data-level="80">
+              <span class="sk-name">Java</span>
+              <div class="sk-bar"><div class="sk-fill" data-w="80"></div></div>
+            </div>
+            <div class="sk-item" data-level="75">
+              <span class="sk-name">C</span>
+              <div class="sk-bar"><div class="sk-fill" data-w="75"></div></div>
+            </div>
+            <div class="sk-item" data-level="88">
+              <span class="sk-name">JavaScript</span>
+              <div class="sk-bar"><div class="sk-fill" data-w="88"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Frontend -->
+        <div class="sk-group reveal-item" data-delay="80">
+          <div class="sk-group-label">
+            <span class="sg-icon">
+              <svg viewBox="0 0 20 20" fill="none" width="16"><rect x="2" y="3" width="16" height="14" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M7 10l-2 2 2 2M13 10l2 2-2 2M10 7l-1 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </span>
+            Frontend
+          </div>
+          <div class="sk-tags">
+            <span class="skt">HTML5</span>
+            <span class="skt">CSS3</span>
+            <span class="skt">React.js</span>
+            <span class="skt">Tailwind</span>
+            <span class="skt">Figma</span>
+            <span class="skt">Responsive Design</span>
+          </div>
+        </div>
+
+        <!-- Backend -->
+        <div class="sk-group reveal-item" data-delay="160">
+          <div class="sk-group-label">
+            <span class="sg-icon">
+              <svg viewBox="0 0 20 20" fill="none" width="16"><path d="M10 2a8 8 0 100 16A8 8 0 0010 2z" stroke="currentColor" stroke-width="1.5"/><path d="M2 10h16M10 2a12 12 0 010 16M10 2a12 12 0 000 16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </span>
+            Backend & DB
+          </div>
+          <div class="sk-tags">
+            <span class="skt">Node.js</span>
+            <span class="skt">Express.js</span>
+            <span class="skt">REST APIs</span>
+            <span class="skt">MongoDB</span>
+            <span class="skt">Firebase</span>
+          </div>
+        </div>
+
+        <!-- Core CS -->
+        <div class="sk-group reveal-item" data-delay="240">
+          <div class="sk-group-label">
+            <span class="sg-icon">
+              <svg viewBox="0 0 20 20" fill="none" width="16"><path d="M10 2L2 6v8l8 4 8-4V6L10 2z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M10 10L2 6M10 10l8-4M10 10v10" stroke="currentColor" stroke-width="1.5"/></svg>
+            </span>
+            Core CS
+          </div>
+          <div class="sk-tags">
+            <span class="skt">OS</span>
+            <span class="skt">DBMS</span>
+            <span class="skt">Computer Networks</span>
+            <span class="skt">OOP</span>
+            <span class="skt">Data Structures</span>
+          </div>
+        </div>
+
+        <!-- Tools -->
+        <div class="sk-group reveal-item" data-delay="320">
+          <div class="sk-group-label">
+            <span class="sg-icon">
+              <svg viewBox="0 0 20 20" fill="none" width="16"><path d="M12.5 2.5L17.5 7.5L7.5 17.5L2.5 17.5L2.5 12.5L12.5 2.5Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M9.5 5.5L14.5 10.5" stroke="currentColor" stroke-width="1.5"/></svg>
+            </span>
+            Tools & DevOps
+          </div>
+          <div class="sk-tags">
+            <span class="skt">Git</span>
+            <span class="skt">GitHub</span>
+            <span class="skt">VS Code</span>
+            <span class="skt">Firebase Hosting</span>
+            <span class="skt">NLP / AI</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience" class="section">
+    <div class="container">
+      <div class="sec-header">
+        <span class="sec-num">03</span>
+        <h2 class="sec-title">Journey</h2>
+      </div>
+      <div class="timeline">
+
+        <div class="tl-entry reveal-item" data-delay="0">
+          <div class="tle-left">
+            <span class="tle-year">2024</span>
+          </div>
+          <div class="tle-connector">
+            <div class="tle-dot active"></div>
+            <div class="tle-line"></div>
+          </div>
+          <div class="tle-card">
+            <div class="tle-badge work">Industry</div>
+            <h3>Web Developer & UI/UX Intern</h3>
+            <div class="tle-org">Codeon Technologies <span class="tle-dur">· 6 months</span></div>
+            <ul class="tle-points">
+              <li>Built fully responsive production-grade web applications from design to deployment</li>
+              <li>Integrated RESTful APIs and backend services into React-based frontends</li>
+              <li>Designed intuitive UI components following modern UX principles and accessibility standards</li>
+              <li>Gained end-to-end exposure to agile development workflows and version control</li>
+            </ul>
+            <div class="tle-chips">
+              <span>React</span><span>Node.js</span><span>Responsive Design</span><span>API Integration</span><span>UI/UX</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="tl-entry reveal-item" data-delay="100">
+          <div class="tle-left">
+            <span class="tle-year">2021–24</span>
+          </div>
+          <div class="tle-connector">
+            <div class="tle-dot"></div>
+            <div class="tle-line"></div>
+          </div>
+          <div class="tle-card">
+            <div class="tle-badge edu">Education</div>
+            <h3>Diploma in Computer Engineering</h3>
+            <div class="tle-org">Govt. Polytechnic Dharmavaram <span class="tle-dur">· 94.16%</span></div>
+            <ul class="tle-points">
+              <li>Graduated with <strong>First Rank</strong> in both IV and VI semesters</li>
+              <li>Specialized coursework in OS, DBMS, Computer Networks, and OOP</li>
+              <li>Led department-level projects and represented the CS department in inter-college events</li>
+            </ul>
+            <div class="tle-chips">
+              <span>94.16%</span><span>First Rank ×2</span><span>Computer Engg.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="tl-entry reveal-item" data-delay="200">
+          <div class="tle-left">
+            <span class="tle-year">2021</span>
+          </div>
+          <div class="tle-connector">
+            <div class="tle-dot"></div>
+          </div>
+          <div class="tle-card">
+            <div class="tle-badge edu">Education</div>
+            <h3>SSC — Secondary School Certificate</h3>
+            <div class="tle-org">Dharmavaram, Andhra Pradesh <span class="tle-dur">· 93.33%</span></div>
+            <ul class="tle-points">
+              <li>Consistent academic excellence building a strong foundation for engineering</li>
+            </ul>
+            <div class="tle-chips">
+              <span>93.33%</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects" class="section section-alt">
+    <div class="container">
+      <div class="sec-header">
+        <span class="sec-num">04</span>
+        <h2 class="sec-title">Selected Work</h2>
+      </div>
+      <p class="sec-sub">Projects spanning AI, full-stack development, and competitive hackathons.</p>
+
+      <div class="proj-list">
+
+        <div class="proj-item reveal-item" data-delay="0">
+          <div class="pi-num">01</div>
+          <div class="pi-content">
+            <div class="pi-top">
+              <h3>Student Academic Management System</h3>
+              <div class="pi-badges">
+                <span class="pi-badge featured">Featured</span>
+              </div>
+            </div>
+            <p>Full-stack MERN application for managing student records, grades, and attendance. Features real-time MongoDB backend, role-based auth, and clean dashboard UI for administrators and students.</p>
+            <div class="pi-stack">
+              <span>MongoDB</span><span>Express.js</span><span>React</span><span>Node.js</span>
+            </div>
+            <a href="https://github.com/PeddakotlaSudarshan" target="_blank" class="pi-link" data-cursor-label="GitHub">
+              View on GitHub
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2v6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </a>
+          </div>
+          <div class="pi-visual">
+            <div class="piv-screen">
+              <div class="piv-bar"><span></span><span></span><span></span></div>
+              <div class="piv-lines">
+                <div class="pvl pvl-1"></div>
+                <div class="pvl pvl-2"></div>
+                <div class="pvl pvl-3"></div>
+                <div class="pvl pvl-2"></div>
+                <div class="pvl pvl-4"></div>
+                <div class="pvl pvl-1"></div>
+                <div class="pvl pvl-3"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="proj-item proj-item-flip reveal-item" data-delay="80">
+          <div class="pi-num">02</div>
+          <div class="pi-content">
+            <div class="pi-top">
+              <h3>AI Text Summarizer</h3>
+              <div class="pi-badges">
+                <span class="pi-badge ai">AI / NLP</span>
+              </div>
+            </div>
+            <p>Intelligent NLP-powered tool using Python to condense lengthy documents into concise, accurate summaries. Implements extractive and abstractive summarization techniques for various document types.</p>
+            <div class="pi-stack">
+              <span>Python</span><span>NLP</span><span>NLTK</span><span>AI/ML</span>
+            </div>
+            <a href="https://github.com/PeddakotlaSudarshan" target="_blank" class="pi-link">
+              View on GitHub
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2v6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </a>
+          </div>
+          <div class="pi-visual">
+            <div class="piv-terminal">
+              <div class="piv-bar dark"><span class="tb-dot r"></span><span class="tb-dot y"></span><span class="tb-dot g"></span></div>
+              <div class="piv-code">
+                <div class="pc-line"><span class="pc-kw">import</span> <span class="pc-id">summarizer</span></div>
+                <div class="pc-line"><span class="pc-fn">nlp</span><span class="pc-op">(</span><span class="pc-str">"document"</span><span class="pc-op">)</span></div>
+                <div class="pc-line pc-out"><span class="pc-acc">→</span> Summary generated</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="proj-item reveal-item" data-delay="0">
+          <div class="pi-num">03</div>
+          <div class="pi-content">
+            <div class="pi-top">
+              <h3>Mental Wellness & Wellbeing Platform</h3>
+              <div class="pi-badges">
+                <span class="pi-badge hack">🏆 Google Hackathon</span>
+              </div>
+            </div>
+            <p>Built for Google Agentic Premier League (GDG Hyderabad). A compassionate platform promoting mental health awareness with guided breathing exercises, mood tracking, and curated resources. Competed under live hackathon conditions.</p>
+            <div class="pi-stack">
+              <span>React</span><span>Firebase</span><span>GDG Hyderabad</span>
+            </div>
+            <a href="https://github.com/PeddakotlaSudarshan" target="_blank" class="pi-link">
+              View on GitHub
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2v6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </a>
+          </div>
+          <div class="pi-visual">
+            <div class="piv-ui">
+              <div class="piu-card">
+                <div class="piuc-label">Mood Today</div>
+                <div class="piuc-meter"><div class="piucm-fill"></div></div>
+              </div>
+              <div class="piu-card sm">
+                <div class="piuc-label">Breathing</div>
+                <div class="piuc-circle"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="proj-item proj-item-flip reveal-item" data-delay="80">
+          <div class="pi-num">04</div>
+          <div class="pi-content">
+            <div class="pi-top">
+              <h3>Social Media UX Enhancement</h3>
+              <div class="pi-badges">
+                <span class="pi-badge hack">🏆 Google Hackathon</span>
+              </div>
+            </div>
+            <p>Hackathon project prototyping intelligent UI improvements to make social media platforms more accessible, mindful, and user-centric. Focused on reducing doomscrolling and improving content quality signals.</p>
+            <div class="pi-stack">
+              <span>UI/UX Design</span><span>Figma</span><span>Prototyping</span>
+            </div>
+            <a href="https://github.com/PeddakotlaSudarshan" target="_blank" class="pi-link">
+              View on GitHub
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2v6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </a>
+          </div>
+          <div class="pi-visual">
+            <div class="piv-mockup">
+              <div class="pm-phone">
+                <div class="pm-screen">
+                  <div class="pm-post"></div>
+                  <div class="pm-post sm"></div>
+                  <div class="pm-post"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="proj-item reveal-item" data-delay="0">
+          <div class="pi-num">05</div>
+          <div class="pi-content">
+            <div class="pi-top">
+              <h3>FLAMES Compatibility Checker</h3>
+              <div class="pi-badges">
+                <span class="pi-badge academic">Academic</span>
+              </div>
+            </div>
+            <p>Interactive web application implementing the FLAMES algorithm with smooth animations and dynamic result displays. Fully responsive for mobile and desktop. Clean UI with CSS keyframe animations and vanilla JS logic.</p>
+            <div class="pi-stack">
+              <span>HTML5</span><span>CSS3</span><span>JavaScript</span>
+            </div>
+            <a href="https://github.com/PeddakotlaSudarshan" target="_blank" class="pi-link">
+              View on GitHub
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2v6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </a>
+          </div>
+          <div class="pi-visual">
+            <div class="piv-flames">
+              <div class="pf-letter" style="--i:0">F</div>
+              <div class="pf-letter" style="--i:1">L</div>
+              <div class="pf-letter" style="--i:2">A</div>
+              <div class="pf-letter" style="--i:3">M</div>
+              <div class="pf-letter" style="--i:4">E</div>
+              <div class="pf-letter" style="--i:5">S</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ACTIVITIES -->
+  <section id="activities" class="section">
+    <div class="container">
+      <div class="sec-header">
+        <span class="sec-num">05</span>
+        <h2 class="sec-title">Beyond Code</h2>
+      </div>
+      <p class="sec-sub">Leadership, national representation, and community impact.</p>
+
+      <div class="act-grid">
+
+        <div class="act-card reveal-item" data-delay="0">
+          <div class="ac-icon national">🇮🇳</div>
+          <div class="ac-tag">National Level</div>
+          <h3>National Integration Camp</h3>
+          <p>Represented Andhra Pradesh at the NIC held in <strong>Jabalpur, Madhya Pradesh</strong> — a prestigious national NSS event fostering unity and leadership development across states.</p>
+        </div>
+
+        <div class="act-card reveal-item" data-delay="80">
+          <div class="ac-icon state">🏆</div>
+          <div class="ac-tag">State Level</div>
+          <h3>NSS — State Level Volunteer</h3>
+          <p>Selected for State Level NSS at Pothukunta, Dharmavaram. Spearheaded high-impact community service programmes across the region over multiple camps.</p>
+        </div>
+
+        <div class="act-card reveal-item" data-delay="160">
+          <div class="ac-icon hack">💻</div>
+          <div class="ac-tag">Hackathon</div>
+          <h3>Google Agentic Premier League</h3>
+          <p>Participated in GDG Hyderabad's hackathon — shipped two full projects (Mental Wellness platform & Social Media UX) under competitive, time-boxed conditions.</p>
+        </div>
+
+        <div class="act-card reveal-item" data-delay="240">
+          <div class="ac-icon lead">🎓</div>
+          <div class="ac-tag">Leadership</div>
+          <h3>Department Representative</h3>
+          <p>Represented the Computer Engineering Department in inter-college meetings and technical events, demonstrating communication and leadership skills beyond academics.</p>
+        </div>
+
+        <div class="act-card reveal-item" data-delay="320">
+          <div class="ac-icon social">🌱</div>
+          <div class="ac-tag">Social Impact</div>
+          <h3>Environmental Campaigns</h3>
+          <p>Led Swachh Bharat Abhiyan drives and environmental awareness campaigns through NSS. Contributed to cleaner communities through organised volunteer programmes.</p>
+        </div>
+
+        <div class="act-card reveal-item" data-delay="400">
+          <div class="ac-icon social">🩸</div>
+          <div class="ac-tag">Community</div>
+          <h3>Blood Donation Drives</h3>
+          <p>Organised NSS blood donation camps, mobilising student participation for life-saving community health initiatives and raising awareness across campuses.</p>
+        </div>
+
+      </div>
+
+      <!-- Stats Banner -->
+      <div class="stats-strip reveal-item" data-delay="0">
+        <div class="ss-item">
+          <span class="ss-num" data-target="94">0</span><span class="ss-unit">.16%</span>
+          <span class="ss-label">Diploma Score</span>
+        </div>
+        <div class="ss-sep"></div>
+        <div class="ss-item">
+          <span class="ss-num" data-target="2">0</span><span class="ss-unit">×</span>
+          <span class="ss-label">Hackathon Projects</span>
+        </div>
+        <div class="ss-sep"></div>
+        <div class="ss-item">
+          <span class="ss-num" data-target="5">0</span><span class="ss-unit">+</span>
+          <span class="ss-label">Projects Shipped</span>
+        </div>
+        <div class="ss-sep"></div>
+        <div class="ss-item">
+          <span class="ss-num" data-target="1">0</span><span class="ss-unit">st</span>
+          <span class="ss-label">Semester Rank</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="section section-alt">
+    <div class="container">
+      <div class="sec-header">
+        <span class="sec-num">06</span>
+        <h2 class="sec-title">Get In Touch</h2>
+      </div>
+      <div class="contact-layout">
+        <div class="contact-left">
+          <p class="cl-lead">Open to full-time roles, freelance projects, and technical collaborations. Let's build something impactful together.</p>
+          <div class="cl-items">
+            <a href="mailto:sudarshanpeddakotla@gmail.com" class="cli-row" data-cursor-label="Email">
+              <div class="cli-icon">
+                <svg viewBox="0 0 20 20" fill="none" width="18"><rect x="2" y="4" width="16" height="13" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M18 7l-8 5.5L2 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+              </div>
+              <div>
+                <span class="cli-label">Email</span>
+                <span class="cli-val">sudarshanpeddakotla@gmail.com</span>
+              </div>
+            </a>
+            <a href="tel:+917675869093" class="cli-row">
+              <div class="cli-icon">
+                <svg viewBox="0 0 20 20" fill="none" width="18"><path d="M3 3h4l1.5 4L7 9s2 4 4 4l1.5-1.5L16 13v4s-2 1-4 0C6 14 2 8 2 5c-1-2 1-2 1-2z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+              <div>
+                <span class="cli-label">Phone</span>
+                <span class="cli-val">+91 76758 69093</span>
+              </div>
+            </a>
+            <a href="https://linkedin.com/in/sudarshan-peddakotla-6851052a7" target="_blank" class="cli-row">
+              <div class="cli-icon">
+                <svg viewBox="0 0 24 24" fill="currentColor" width="18"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+              </div>
+              <div>
+                <span class="cli-label">LinkedIn</span>
+                <span class="cli-val">/sudarshan-peddakotla-6851052a7</span>
+              </div>
+            </a>
+            <a href="https://github.com/PeddakotlaSudarshan" target="_blank" class="cli-row">
+              <div class="cli-icon">
+                <svg viewBox="0 0 24 24" fill="currentColor" width="18"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+              </div>
+              <div>
+                <span class="cli-label">GitHub</span>
+                <span class="cli-val">/PeddakotlaSudarshan</span>
+              </div>
+            </a>
+          </div>
+        </div>
+        <form class="contact-form" id="contactForm">
+          <div class="cf-row">
+            <div class="cf-group">
+              <label>Name</label>
+              <input type="text" name="name" placeholder="Your full name" required/>
+            </div>
+            <div class="cf-group">
+              <label>Email</label>
+              <input type="email" name="email" placeholder="you@example.com" required/>
+            </div>
+          </div>
+          <div class="cf-group">
+            <label>Subject</label>
+            <input type="text" name="subject" placeholder="Job opportunity / Collaboration / Freelance"/>
+          </div>
+          <div class="cf-group">
+            <label>Message</label>
+            <textarea name="message" rows="5" placeholder="Tell me about your project, role, or idea..." required></textarea>
+          </div>
+          <button type="submit" class="cf-submit" id="cfSubmit">
+            <span class="cfs-text">Send Message</span>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M1 8h14M9 2l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="cf-msg" id="cfMsg"></div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer id="footer">
+    <div class="container">
+      <div class="footer-top">
+        <a href="#hero" class="ft-brand">
+          <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
+            <rect width="36" height="36" rx="9" fill="#00ff87" fill-opacity="0.08" stroke="#00ff87" stroke-width="1"/>
+            <text x="6" y="25" font-family="JetBrains Mono" font-weight="700" font-size="14" fill="#00ff87">PS</text>
+          </svg>
+          <span>Peddakotla Sudarshan</span>
+        </a>
+        <div class="ft-links">
+          <a href="#about">About</a>
+          <a href="#skills">Skills</a>
+          <a href="#projects">Projects</a>
+          <a href="#contact">Contact</a>
+        </div>
+        <div class="ft-socials">
+          <a href="https://github.com/PeddakotlaSudarshan" target="_blank" title="GitHub">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="18"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+          </a>
+          <a href="https://linkedin.com/in/sudarshan-peddakotla-6851052a7" target="_blank" title="LinkedIn">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="18"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          </a>
+          <a href="mailto:sudarshanpeddakotla@gmail.com" title="Email">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="18"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 7L2 7"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2025 Peddakotla Sudarshan — Built with craft & code.</span>
+        <a href="#hero" class="back-to-top">
+          Back to top
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 10V2M2 6l4-4 4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
