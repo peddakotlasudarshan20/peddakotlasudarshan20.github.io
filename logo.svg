@@ -1,0 +1,32 @@
+<svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      @keyframes logoGlow {
+        0%, 100% { filter: drop-shadow(0 0 0 rgba(77, 208, 225, 0)); }
+        50% { filter: drop-shadow(0 0 6px rgba(77, 208, 225, 0.4)); }
+      }
+      @keyframes logoFloat {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-2px); }
+      }
+      .logo-primary { animation: logoGlow 4s ease-in-out infinite; }
+      .logo-primary:hover { animation: logoGlow 1.2s ease-in-out infinite; }
+      .logo-letter { fill: none; stroke: #4DD0E1; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+      .logo-accent { fill: #4DD0E1; }
+      .logo-primary:hover .logo-letter { stroke-width: 1.9; filter: drop-shadow(0 0 8px rgba(77,208,225,0.7)); }
+      .logo-primary:hover .logo-accent { filter: drop-shadow(0 0 6px rgba(77,208,225,0.9)); }
+    </style>
+  </defs>
+  
+  <g class="logo-primary">
+    <!-- P: geometric, clean letterform -->
+    <path class="logo-letter" d="M 10 34 L 10 10 L 20 10 Q 25 10 25 15 Q 25 20 20 20 L 10 20"/>
+    
+    <!-- S: flowing curves with precision -->
+    <path class="logo-letter" d="M 34 13 Q 37 10 41 10 Q 44 10 44 13 Q 44 16 40 17 Q 35 18 35 23 Q 35 28 40 29 Q 44 30 44 33 Q 44 36 40 37 Q 37 37 34 34"/>
+    
+    <!-- Central accent: small geometric element symbolizing connection/tech -->
+    <circle class="logo-accent" cx="28" cy="20" r="1.5" opacity="0.8"/>
+    <line class="logo-letter" x1="28" y1="18" x2="28" y2="22" stroke-width="0.8"/>
+  </g>
+</svg>

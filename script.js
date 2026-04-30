@@ -51,11 +51,11 @@ function startReveal() {
   const positions = new Float32Array(COUNT * 3);
   const colors    = new Float32Array(COUNT * 3);
   const palette   = [
-    new THREE.Color(0x00ff87),  // acid green
-    new THREE.Color(0x0066ff),  // electric blue
-    new THREE.Color(0x00ccff),  // cyan
-    new THREE.Color(0x00ff87),  // more green weight
-    new THREE.Color(0x00ff87),
+    new THREE.Color(0x4DD0E1),  // teal
+    new THREE.Color(0x60A5FA),  // electric blue
+    new THREE.Color(0x2BB1BF),  // dark teal
+    new THREE.Color(0x4DD0E1),  // more teal weight
+    new THREE.Color(0x4DD0E1),
   ];
 
   for (let i = 0; i < COUNT; i++) {
@@ -90,14 +90,14 @@ function startReveal() {
     return new THREE.Mesh(geo, m);
   };
 
-  const ico = mkWire(new THREE.IcosahedronGeometry(9, 1), 0x00ff87, 0.04);
+  const ico = mkWire(new THREE.IcosahedronGeometry(9, 1), 0x4DD0E1, 0.04);
   scene.add(ico);
 
-  const oct = mkWire(new THREE.OctahedronGeometry(5, 0), 0x0066ff, 0.05);
+  const oct = mkWire(new THREE.OctahedronGeometry(5, 0), 0x60A5FA, 0.05);
   oct.position.set(12, -3, -6);
   scene.add(oct);
 
-  const torus = mkWire(new THREE.TorusGeometry(6, 1.5, 8, 24), 0x00ff87, 0.03);
+  const torus = mkWire(new THREE.TorusGeometry(6, 1.5, 8, 24), 0x4DD0E1, 0.03);
   torus.position.set(-14, 4, -10);
   scene.add(torus);
 
@@ -227,7 +227,7 @@ function initTyping() {
 }
 
 /* ── SCROLL REVEALS ── */
-(function initReveal() {
+function initReveal() {
   const items = document.querySelectorAll(".reveal-item");
 
   const io = new IntersectionObserver((entries) => {
@@ -235,26 +235,37 @@ function initTyping() {
       if (!entry.isIntersecting) return;
       const el    = entry.target;
       const delay = Number(el.dataset.delay || 0);
-      setTimeout(() => el.classList.add("visible"), delay);
+      setTimeout(() => {
+        el.classList.add("visible");
+        el.style.transitionDelay = (delay / 1000) + "s";
+      }, delay);
       io.unobserve(el);
     });
-  }, { threshold: 0.12 });
+  }, { threshold: 0.08 });
 
   items.forEach(el => io.observe(el));
 
-  /* Skill bar fills on reveal */
+  /* Staggered reveals for list items */
+  document.querySelectorAll(".tle-points li, .pi-stack span").forEach((item, idx) => {
+    item.style.transitionDelay = (idx * 0.08) + "s";
+  });
+
+  /* Skill bar fills on reveal with easing */
   const sbObs = new IntersectionObserver(entries => {
     entries.forEach(entry => {
       if (!entry.isIntersecting) return;
-      entry.target.querySelectorAll(".sk-fill").forEach(fill => {
-        setTimeout(() => { fill.style.width = fill.dataset.w + "%"; }, 200);
+      entry.target.querySelectorAll(".sk-fill").forEach((fill, idx) => {
+        setTimeout(() => { 
+          fill.style.width = fill.dataset.w + "%";
+          fill.style.transitionTimingFunction = "cubic-bezier(0.16, 1, 0.3, 1)";
+        }, idx * 120);
       });
       sbObs.unobserve(entry.target);
     });
-  }, { threshold: 0.4 });
+  }, { threshold: 0.3 });
 
   document.querySelectorAll(".sk-group").forEach(g => sbObs.observe(g));
-})();
+}
 
 /* -------------------------------------------------
    SCROLL PROGRESS BAR
@@ -329,7 +340,7 @@ document.addEventListener('DOMContentLoaded', () => {
 })();
 
 /* ── ACTIVE NAV ── */
-(function initActiveNav() {
+function initActiveNav() {
   const sections = document.querySelectorAll("section[id]");
   const links    = document.querySelectorAll(".nl");
 
@@ -343,7 +354,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }, { threshold: 0.45 });
 
   sections.forEach(s => io.observe(s));
-})();
+}
 
 /* ── SMOOTH SCROLL ── */
 (function initSmoothScroll() {
@@ -389,12 +400,12 @@ document.addEventListener('DOMContentLoaded', () => {
       const r = card.getBoundingClientRect();
       const x = (e.clientX - r.left) / r.width  - 0.5;
       const y = (e.clientY - r.top)  / r.height - 0.5;
-      card.style.transform     = `perspective(800px) rotateY(${x*4}deg) rotateX(${-y*4}deg)`;
-      card.style.transition    = "transform 0.05s linear";
+      card.style.transform     = `perspective(1000px) rotateY(${x*3}deg) rotateX(${-y*3}deg) translateZ(8px)`;
+      card.style.transition    = "transform 0.04s linear";
     });
     card.addEventListener("mouseleave", () => {
       card.style.transform  = "";
-      card.style.transition = "transform 0.5s var(--ease, ease), border-color 0.3s, background 0.3s";
+      card.style.transition = "transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s, background 0.4s";
     });
   });
 })();

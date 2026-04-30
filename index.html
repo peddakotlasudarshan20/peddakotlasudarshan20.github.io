@@ -8,6 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,400;12..96,500;12..96,700;12..96,800&family=JetBrains+Mono:wght@300;400;500&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg"/>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
   <link rel="stylesheet" href="style.css?v=2"/>
 </head>
@@ -37,9 +38,27 @@
   <!-- NAV -->
   <nav id="nav" class="navbar">
     <a href="#hero" class="nav-brand logo">
-      <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-        <rect width="32" height="32" rx="8" fill="#00ff87" fill-opacity="0.1" stroke="#00ff87" stroke-width="1"/>
-        <text x="5" y="22" font-family="JetBrains Mono" font-weight="700" font-size="13" fill="#00ff87">PS</text>
+      <svg class="nav-logo" width="32" height="32" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <style>
+            @keyframes logoGlow {
+              0%, 100% { filter: drop-shadow(0 0 0 rgba(77, 208, 225, 0)); }
+              50% { filter: drop-shadow(0 0 6px rgba(77, 208, 225, 0.4)); }
+            }
+            .nav-logo-primary { animation: logoGlow 4s ease-in-out infinite; }
+            .nav-logo-primary:hover { animation: logoGlow 1.2s ease-in-out infinite; }
+            .nav-logo-letter { fill: none; stroke: #4DD0E1; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+            .nav-logo-accent { fill: #4DD0E1; }
+            .nav-logo-primary:hover .nav-logo-letter { stroke-width: 1.9; filter: drop-shadow(0 0 8px rgba(77,208,225,0.7)); }
+            .nav-logo-primary:hover .nav-logo-accent { filter: drop-shadow(0 0 6px rgba(77,208,225,0.9)); }
+          </style>
+        </defs>
+        <g class="nav-logo-primary">
+          <path class="nav-logo-letter" d="M 10 34 L 10 10 L 20 10 Q 25 10 25 15 Q 25 20 20 20 L 10 20"/>
+          <path class="nav-logo-letter" d="M 34 13 Q 37 10 41 10 Q 44 10 44 13 Q 44 16 40 17 Q 35 18 35 23 Q 35 28 40 29 Q 44 30 44 33 Q 44 36 40 37 Q 37 37 34 34"/>
+          <circle class="nav-logo-accent" cx="28" cy="20" r="1.5" opacity="0.8"/>
+          <line class="nav-logo-letter" x1="28" y1="18" x2="28" y2="22" stroke-width="0.8"/>
+        </g>
       </svg>
     </a>
     <div class="nav-links" id="navLinks">
@@ -70,50 +89,47 @@
     <canvas id="heroCanvas"></canvas>
     <div class="hero-grid-overlay"></div>
     <div class="hero-inner">
-      <div class="hero-eyebrow">
-        <span class="dot-pulse"></span>
-        Available for opportunities
-      </div>
-      <h1 class="hero-name">
-        <span class="hn-line" data-text="Peddakotla">Peddakotla</span>
-        <span class="hn-line accent" data-text="Sudarshan">Sudarshan</span>
-      </h1>
-      <div class="hero-role-wrap">
-        <span class="role-prefix">→ </span>
-        <span id="typed" class="typed-el"></span>
-        <span class="typed-cursor">_</span>
-      </div>
-      <p class="hero-desc">
-        Web Developer & UI/UX Engineer crafting performant,<br class="br-desk"/>
-        scalable web experiences from Dharmavaram, AP.
-      </p>
-      <div class="hero-actions">
-        <a href="#projects" class="btn-primary">
-          <span>View Work</span>
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </a>
-        <a href="#contact" class="btn-outline">Let's Connect</a>
-      </div>
-      <div class="hero-meta">
-        <div class="hm-item">
-          <span class="hm-num">94.16<em>%</em></span>
-          <span class="hm-label">Diploma Score</span>
+      <div class="hero-grid">
+        <div class="hero-main">
+          <div class="hero-eyebrow">Available for opportunities</div>
+          <h1 class="hero-name">
+            <span class="hn-line">Peddakotla</span>
+            <span class="hn-line accent">Sudarshan</span>
+          </h1>
+          <p class="hero-desc">I build clean, responsive web apps and polished UIs — focused on performance, accessibility, and clarity.</p>
+
+          <div class="hero-actions">
+            <a href="#projects" class="btn-primary">View Work
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+            <a href="#contact" class="btn-outline">Let's Connect</a>
+            <a href="resume%20sudarshan%20(1).pdf" class="btn-primary" download>Download Resume</a>
+          </div>
+
+          <div class="hero-tags">
+            <span class="tag">Frontend</span>
+            <span class="tag">React</span>
+            <span class="tag">Node.js</span>
+            <span class="tag">UI/UX</span>
+          </div>
         </div>
-        <div class="hm-divider"></div>
-        <div class="hm-item">
-          <span class="hm-num">1<em>st</em></span>
-          <span class="hm-label">Semester Rank</span>
-        </div>
-        <div class="hm-divider"></div>
-        <div class="hm-item">
-          <span class="hm-num">5<em>+</em></span>
-          <span class="hm-label">Projects Built</span>
-        </div>
-        <div class="hm-divider"></div>
-        <div class="hm-item">
-          <span class="hm-num">6<em>mo</em></span>
-          <span class="hm-label">Industry Exp.</span>
-        </div>
+
+        <aside class="hero-card">
+          <div class="hc-avatar">
+            <div class="av-core"><span>PS</span></div>
+          </div>
+          <div class="hc-role">Web Developer · UI/UX</div>
+          <div class="hc-stats">
+            <div><strong>94.16%</strong><span> Diploma</span></div>
+            <div><strong>1st</strong><span> Semester Rank</span></div>
+            <div><strong>5+</strong><span> Projects</span></div>
+          </div>
+          <a href="#contact" class="btn-primary hc-cta">Hire / Contact</a>
+          <div class="hc-links">
+            <a href="https://github.com/peddakotlasudarshan20" target="_blank">GitHub</a>
+            <a href="https://linkedin.com/in/sudarshan-peddakotla-6851052a7" target="_blank">LinkedIn</a>
+          </div>
+        </aside>
       </div>
     </div>
     <div class="hero-scroll">
@@ -162,10 +178,10 @@
         </div>
         <div class="about-right">
           <div class="about-text-block">
-            <p class="at-lead">I'm a <strong>Web Developer</strong> who graduated top of my class in Computer Engineering — <em>94.16%</em>, First Rank in two semesters.</p>
-            <p>During my internships, I built production-ready responsive web applications, integrated REST APIs, and delivered polished UI/UX experiences for business users.</p>
-            <p>I focus on clean front-end architecture, accessible interactions, and efficient web experiences. I’ve also created Python tools and supported AI-powered workflows, with strong attention to usability and performance.</p>
-            <p>Beyond development, I contribute to community programs and leadership initiatives that reinforce discipline, collaboration, and impact.</p>
+            <p class="at-lead"><strong>Web Developer</strong> with a top‑rank Computer Engineering background (94.16% GPA, multiple first‑rank semesters).</p>
+            <p>Delivered production‑ready, responsive web applications at Codeon Technologies and AP Skill Development, integrating REST APIs and crafting polished UI/UX.</p>
+            <p>Specialise in clean front‑end architecture, accessibility, and performance‑focused solutions. Experienced with Python tooling and AI‑enhanced workflows.</p>
+            <p>Active community contributor and technical leader, driving collaborative projects and mentorship.</p>
           </div>
           <div class="about-facts">
             <div class="af-item">
@@ -728,9 +744,22 @@
     <div class="container">
       <div class="footer-top">
         <a href="#hero" class="ft-brand">
-          <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
-            <rect width="36" height="36" rx="9" fill="#00ff87" fill-opacity="0.08" stroke="#00ff87" stroke-width="1"/>
-            <text x="6" y="25" font-family="JetBrains Mono" font-weight="700" font-size="14" fill="#00ff87">PS</text>
+          <svg class="ft-logo" width="36" height="36" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <style>
+                .ft-logo-primary { transition: all .3s cubic-bezier(0.16, 1, 0.3, 1); }
+                .ft-logo-letter { fill: none; stroke: #4DD0E1; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+                .ft-logo-accent { fill: #4DD0E1; }
+                .ft-brand:hover .ft-logo-primary { filter: drop-shadow(0 0 8px rgba(77,208,225,0.6)); }
+                .ft-brand:hover .ft-logo-letter { stroke-width: 1.9; }
+              </style>
+            </defs>
+            <g class="ft-logo-primary">
+              <path class="ft-logo-letter" d="M 10 34 L 10 10 L 20 10 Q 25 10 25 15 Q 25 20 20 20 L 10 20"/>
+              <path class="ft-logo-letter" d="M 34 13 Q 37 10 41 10 Q 44 10 44 13 Q 44 16 40 17 Q 35 18 35 23 Q 35 28 40 29 Q 44 30 44 33 Q 44 36 40 37 Q 37 37 34 34"/>
+              <circle class="ft-logo-accent" cx="28" cy="20" r="1.5" opacity="0.8"/>
+              <line class="ft-logo-letter" x1="28" y1="18" x2="28" y2="22" stroke-width="0.8"/>
+            </g>
           </svg>
           <span>Peddakotla Sudarshan</span>
         </a>

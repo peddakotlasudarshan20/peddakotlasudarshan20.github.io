@@ -1,0 +1,18 @@
+<svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .logo-3-letter { fill: none; stroke: #4DD0E1; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+      .logo-3-accent { fill: #4DD0E1; }
+      .logo-3:hover .logo-3-letter { stroke-width: 2.6; filter: drop-shadow(0 0 10px rgba(77,208,225,0.6)); }
+      .logo-3:hover .logo-3-accent { filter: drop-shadow(0 0 8px rgba(77,208,225,0.7)); }
+    </style>
+  </defs>
+  <g class="logo-3">
+    <!-- P: clean serif-inspired lettermark -->
+    <path class="logo-3-letter" d="M 16 48 L 16 16 L 30 16 Q 36 16 36 22 Q 36 28 30 28 L 16 28"/>
+    <!-- S: smooth flowing lettermark -->
+    <path class="logo-3-letter" d="M 48 20 Q 52 18 56 20 Q 58 22 56 24 Q 52 26 48 26 Q 44 26 46 30 Q 48 34 52 36 Q 56 38 56 40 Q 56 43 52 45 Q 48 46 44 44"/>
+    <!-- Negative space accent: small hexagon between letters -->
+    <polygon class="logo-3-accent" points="39,30 41,28 43,29 43,33 41,34 39,33"/>
+  </g>
+</svg>

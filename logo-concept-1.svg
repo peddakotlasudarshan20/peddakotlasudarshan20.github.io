@@ -1,0 +1,18 @@
+<svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .logo-1-base { fill: none; stroke: #4DD0E1; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+      .logo-1-accent { fill: #4DD0E1; }
+      .logo-1:hover .logo-1-base { stroke-width: 2.4; filter: drop-shadow(0 0 8px rgba(77,208,225,0.6)); }
+      .logo-1:hover .logo-1-accent { filter: drop-shadow(0 0 6px rgba(77,208,225,0.8)); }
+    </style>
+  </defs>
+  <g class="logo-1">
+    <!-- Geometric P: angular, modern -->
+    <path class="logo-1-base" d="M 18 48 L 18 16 L 28 16 Q 35 16 35 24 Q 35 30 28 30 L 18 30"/>
+    <!-- Geometric S: flowing curves with angles -->
+    <path class="logo-1-base" d="M 44 20 Q 52 20 52 26 Q 52 32 44 32 Q 36 32 36 38 Q 36 44 44 44 Q 52 44 52 40"/>
+    <!-- Connecting accent: small circle symbolizing connection -->
+    <circle class="logo-1-accent" cx="32" cy="32" r="2.5"/>
+  </g>
+</svg>
