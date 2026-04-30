@@ -857,6 +857,36 @@ body, p, .pi-content p, .about-text-block p, .hero-desc {
   overflow-wrap: break-word;
 }
 
+/* -------------------------------------------------
+   Global overflow safety (applies to all elements)
+   ------------------------------------------------- */
+html, body { overflow-x: hidden; }
+* { max-width: 100%; box-sizing: border-box; }
+
+/* Containers that may cause overflow */
+.container,
+section,
+.projects,
+.proj-wrapper {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+/* Mobile overrides to force no overflow */
+@media (max-width: 768px) {
+  * { max-width: 100% !important; }
+  .projects,
+  .proj-wrapper,
+  .proj-item {
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 12px !important;
+  }
+}
+
 /* Mobile fixes */
 @media (max-width: 768px) {
   /* Project cards */
