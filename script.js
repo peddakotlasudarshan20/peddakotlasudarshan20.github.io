@@ -1,6 +1,6 @@
 /* =====================================================
    PEDDAKOTLA SUDARSHAN — PORTFOLIO JS
-   Three.js Hero | Typing | Scroll Reveals | Cursor
+   Three.js Hero | Typing | Scroll Reveals | Cursor|
    ===================================================== */
 
 "use strict";
