@@ -856,6 +856,18 @@ body.cursor-active #cur-label { opacity: 1; }
 }
 .pi-link:hover { gap: 10px; }
 
+/* Ensure Live Demo button (styled as .pi-link.btn-primary) is visible */
+.pi-link.btn-primary {
+  color: var(--bg);
+  background: var(--accent);
+  padding: 0.4rem 0.8rem;
+  border-radius: 4px;
+  transition: background .2s ease;
+}
+.pi-link.btn-primary:hover {
+  background: var(--accent-d);
+}
+
 /* Mobile responsive layout for project cards */
 @media (max-width: 768px) {
   .proj-item {
