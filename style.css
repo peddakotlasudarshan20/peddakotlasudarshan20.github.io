@@ -771,18 +771,9 @@ body.cursor-active #cur-label { opacity: 1; }
 .proj-list { display: flex; flex-direction: column; gap: 2px; }
 .proj-item {
   display: grid;
-  grid-template-columns: 64px 1fr 380px;
-  gap: 40px;
-  align-items: start;
-  border: 1px solid var(--border);
-  padding: 40px 40px 40px 32px;
-  background: rgba(255,255,255,0.04);
-  border-radius: 24px;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
-  transition: border-color .4s cubic-bezier(0.16, 1, 0.3, 1), background .4s cubic-bezier(0.16, 1, 0.3, 1), transform .4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow .4s cubic-bezier(0.16, 1, 0.3, 1);
-  position: relative;
-  overflow: hidden;
-  transform: translateZ(0);
+  grid-template-columns: 64px 1fr;
+  gap: 24px;
+  padding: 24px;
 }
 .proj-item:hover {
   transform: translateY(-6px);
@@ -894,17 +885,31 @@ body, p, .pi-content p, .about-text-block p, .hero-desc {
 
 /* Global reset for mobile */
 @media (max-width: 1024px) {
-  *, *::before, *::after { box-sizing: border-box; }
-  html, body { width: 100%; max-width: 100%; overflow-x: hidden; }
-  .container, .hero-grid, .about-layout, .skills-constellation {
-    width: 100%;
-    padding-left: 1rem;
-    padding-right: 1rem;
+  /* Project cards */
+  .proj-item {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 16px !important;
+    gap: 16px !important;
   }
-}
-
-/* Tablet and smaller */
-@media (max-width: 768px) {
+  .proj-item .pi-content,
+  .proj-item .pi-visual {
+    width: 100% !important;
+  }
+  .piv-screen,
+  .piv-terminal,
+  .piv-ui,
+  .piv-mockup {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+  .pi-link,
+  .btn-primary {
+    width: 100% !important;
+    display: block !important;
+  }
   /* Sections spacing */
   .section { padding: 3rem 1rem; }
   /* Hero layout */
@@ -1603,6 +1608,108 @@ html.loaded {
   position: fixed; left: 0; top: 0; height: 4px; width: 0%;
   background: linear-gradient(90deg, rgba(77,208,225,0.95), rgba(96,165,250,0.9));
   z-index: 10050; transition: width 120ms linear; box-shadow: 0 4px 18px rgba(77,208,225,0.06);
+}
+
+/* -------------------------------------------------
+   CRITICAL MOBILE OVERFLOW FIXES
+   ------------------------------------------------- */
+
+/* Global box-sizing and text wrapping */
+* {
+  box-sizing: border-box;
+}
+
+body, p, div, span, a, button {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+/* Critical mobile layout fixes */
+@media (max-width: 768px) {
+  html, body {
+    overflow-x: hidden !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  /* Project cards - force within viewport */
+  .proj-item {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 auto 20px !important;
+    padding: 16px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    transform: none !important;
+    position: relative !important;
+    overflow: hidden !important;
+    grid-template-columns: 1fr !important;
+    gap: 16px;
+  }
+
+  .proj-item * {
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .proj-item a,
+  .proj-item button,
+  .proj-item .pi-link {
+    width: 100% !important;
+    display: block !important;
+    max-width: 100% !important;
+  }
+
+  /* Containers */
+  .container,
+  .section,
+  .proj-list,
+  .proj-item,
+  .skills-constellation,
+  .about-layout,
+  .hero-grid {
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow-x: hidden !important;
+  }
+
+  /* Prevent element overflow */
+  .pi-content,
+  .pi-visual,
+  .pi-num,
+  .sk-group,
+  .hero-main,
+  .hero-card {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  /* Buttons */
+  .btn-primary,
+  .btn-outline,
+  .pi-link.btn-primary {
+    width: auto;
+    max-width: 100%;
+    padding: 0.6rem 1rem;
+    min-height: 44px;
+  }
+}
+
+/* Mobile phones extra safety */
+@media (max-width: 480px) {
+  .proj-item {
+    padding: 12px !important;
+  }
+
+  .proj-item .pi-content h3 {
+    font-size: 1.1rem;
+    word-wrap: break-word;
+  }
+
+  .proj-item .pi-content p {
+    font-size: 0.85rem;
+    word-wrap: break-word;
+  }
 }
 
 /* Scroll-to-top button */
