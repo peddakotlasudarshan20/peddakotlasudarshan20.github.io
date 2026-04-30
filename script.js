@@ -374,22 +374,34 @@ function initActiveNav() {
   const btn  = document.getElementById("cfSubmit");
   if (!form) return;
 
+  // Ensure EmailJS is initialized (in case the HTML script tag hasn't run yet)
+  if (typeof emailjs !== "undefined" && emailjs.init) {
+    emailjs.init("pEMZnKQd0GYVXJw3V");
+  }
+
   form.addEventListener("submit", e => {
     e.preventDefault();
-    const txt  = btn.querySelector(".cfs-text");
+    const txt = btn.querySelector(".cfs-text");
     txt.textContent = "Sending…";
-    btn.disabled    = true;
+    btn.disabled = true;
     msg.classList.remove("show", "error");
 
-    // Replace with EmailJS / Firebase integration
-    setTimeout(() => {
-      msg.textContent = "✓ Message sent! I'll get back to you soon.";
-      msg.classList.add("show");
-      form.reset();
-      txt.textContent = "Send Message";
-      btn.disabled    = false;
-      setTimeout(() => msg.classList.remove("show"), 5000);
-    }, 1200);
+    emailjs.sendForm("service_m41286a", "template_1idwrdx", form)
+      .then(() => {
+        msg.textContent = "✓ Message sent! I'll get back to you soon.";
+        msg.classList.add("show");
+        form.reset();
+        txt.textContent = "Send Message";
+        btn.disabled = false;
+        setTimeout(() => msg.classList.remove("show"), 5000);
+      })
+      .catch(error => {
+        msg.textContent = "Failed to send message. Please try again later.";
+        msg.classList.add("show", "error");
+        console.error(error);
+        txt.textContent = "Send Message";
+        btn.disabled = false;
+      });
   });
 })();
 

@@ -796,6 +796,23 @@
   <!-- SCROLL TO TOP BUTTON -->
   <button id="toTop" class="to-top" aria-label="Scroll to top">↑</button>
 </body>
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+  <script>
+  (function(){
+    emailjs.init("pEMZnKQd0GYVXJw3V");
+  })();
+
+  document.getElementById("contact-form").addEventListener("submit", function(e) {
+    e.preventDefault();
+    emailjs.sendForm("service_m41286a", "template_1idwrdx", this)
+      .then(function() {
+        alert("Message sent successfully!");
+      }, function(error) {
+        alert("Failed to send message.");
+        console.log(error);
+      });
+  });
+  </script>
 </html>
 
 
