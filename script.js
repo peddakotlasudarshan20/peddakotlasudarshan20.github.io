@@ -256,6 +256,48 @@ function initTyping() {
   document.querySelectorAll(".sk-group").forEach(g => sbObs.observe(g));
 })();
 
+/* -------------------------------------------------
+   SCROLL PROGRESS BAR
+   ------------------------------------------------- */
+function initScrollProgress() {
+  const bar = document.getElementById('scrollProgress');
+  if (!bar) return;
+  window.addEventListener('scroll', () => {
+    const scrollTop = document.documentElement.scrollTop;
+    const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const scrolled = (scrollTop / scrollHeight) * 100;
+    bar.style.width = `${scrolled}%`;
+  });
+}
+
+/* -------------------------------------------------
+   SCROLL‑TO‑TOP BUTTON
+   ------------------------------------------------- */
+function initToTop() {
+  const btn = document.getElementById('toTop');
+  if (!btn) return;
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 300) btn.classList.add('show');
+    else btn.classList.remove('show');
+  });
+  btn.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+}
+
+/* -------------------------------------------------
+   INITIALISE ALL
+   ------------------------------------------------- */
+document.addEventListener('DOMContentLoaded', () => {
+  // page load animation
+  document.documentElement.classList.add('loaded');
+  // existing init functions
+  initReveal();
+  initActiveNav();
+  initScrollProgress();
+  initToTop();
+});
+
 /* ── COUNTER ANIMATION ── */
 (function initCounters() {
   const items = document.querySelectorAll(".ss-num[data-target]");

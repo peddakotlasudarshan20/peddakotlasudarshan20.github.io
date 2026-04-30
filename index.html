@@ -31,9 +31,12 @@
   <div id="cur-ring"></div>
   <div id="cur-label"></div>
 
+  <!-- SCROLL PROGRESS BAR -->
+  <div id="scrollProgress" class="scroll-progress"></div>
+
   <!-- NAV -->
-  <nav id="nav">
-    <a href="#hero" class="nav-brand">
+  <nav id="nav" class="navbar">
+    <a href="#hero" class="nav-brand logo">
       <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
         <rect width="32" height="32" rx="8" fill="#00ff87" fill-opacity="0.1" stroke="#00ff87" stroke-width="1"/>
         <text x="5" y="22" font-family="JetBrains Mono" font-weight="700" font-size="13" fill="#00ff87">PS</text>
@@ -63,7 +66,7 @@
   </div>
 
   <!-- HERO -->
-  <section id="hero">
+  <section id="hero" class="reveal">
     <canvas id="heroCanvas"></canvas>
     <div class="hero-grid-overlay"></div>
     <div class="hero-inner">
@@ -120,7 +123,7 @@
   </section>
 
   <!-- ABOUT -->
-  <section id="about" class="section">
+  <section id="about" class="section reveal">
     <div class="container">
       <div class="sec-header">
         <span class="sec-num">01</span>
@@ -184,7 +187,7 @@
   </section>
 
   <!-- SKILLS -->
-  <section id="skills" class="section section-alt">
+  <section id="skills" class="section section-alt reveal">
     <div class="container">
       <div class="sec-header">
         <span class="sec-num">02</span>
@@ -295,7 +298,7 @@
   </section>
 
   <!-- EXPERIENCE -->
-  <section id="experience" class="section">
+  <section id="experience" class="section reveal">
     <div class="container">
       <div class="sec-header">
         <span class="sec-num">03</span>
@@ -396,7 +399,7 @@
   </section>
 
   <!-- PROJECTS -->
-  <section id="projects" class="section section-alt">
+  <section id="projects" class="section section-alt reveal">
     <div class="container">
       <div class="sec-header">
         <span class="sec-num">04</span>
@@ -571,7 +574,7 @@
   </section>
 
   <!-- ACTIVITIES -->
-  <section id="activities" class="section">
+  <section id="activities" class="section reveal">
     <div class="container">
       <div class="sec-header">
         <span class="sec-num">05</span>
@@ -652,7 +655,7 @@
   </section>
 
   <!-- CONTACT -->
-  <section id="contact" class="section section-alt">
+  <section id="contact" class="section section-alt reveal">
     <div class="container">
       <div class="sec-header">
         <span class="sec-num">06</span>
@@ -721,7 +724,7 @@
   </section>
 
   <!-- FOOTER -->
-  <footer id="footer">
+  <footer id="footer" class="reveal">
     <div class="container">
       <div class="footer-top">
         <a href="#hero" class="ft-brand">
@@ -760,6 +763,9 @@
   </footer>
 
   <script src="script.js?v=2" defer></script>
+
+  <!-- SCROLL TO TOP BUTTON -->
+  <button id="toTop" class="to-top" aria-label="Scroll to top">↑</button>
 </body>
 </html>
 
