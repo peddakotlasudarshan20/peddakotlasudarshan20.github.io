@@ -1363,6 +1363,58 @@ html.loaded {
   .al-btn { font-size: 10px; }
 
   .skills-constellation { grid-template-columns: 1fr; }
+/* -------------------------------------------------
+   Production‑grade mobile responsiveness
+   ------------------------------------------------- */
+
+/* 1️⃣ Typography & readability */
+@media (max-width: 768px) {
+  html { font-size: 100%; }
+  body { line-height: 1.6; }
+  h1, .hero-name { font-size: 2.2rem; }
+  h2, .sec-title { font-size: 1.8rem; }
+  h3 { font-size: 1.4rem; }
+  p { margin-bottom: 1rem; }
+}
+
+/* 2️⃣ Buttons – touch friendly */
+@media (max-width: 768px) {
+  .btn-primary, .btn-outline {
+    min-height: 48px;
+    padding: 0.75rem 1.25rem;
+    font-size: 0.95rem;
+  }
+}
+
+/* 3️⃣ Section spacing */
+@media (max-width: 768px) {
+  .section { padding: 3rem 1.5rem; }
+}
+
+/* 4️⃣ Hero actions spacing on small screens */
+@media (max-width: 768px) {
+  .hero-actions { gap: 0.75rem; flex-wrap: wrap; }
+}
+
+/* 5️⃣ Skill boxes – contrast & padding */
+@media (max-width: 768px) {
+  .sk-group {
+    background: var(--bg2);
+    color: var(--text);
+    padding: 1rem;
+    border-radius: 6px;
+  }
+  .sk-name { color: var(--accent); }
+}
+
+/* 6️⃣ Prevent horizontal overflow on any device */
+@media (max-width: 1024px) {
+  .container, .hero-grid, .about-layout, .skills-constellation {
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
 
   .tl-entry { grid-template-columns: 60px 20px 1fr; gap: 16px; }
 
