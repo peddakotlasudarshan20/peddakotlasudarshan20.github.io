@@ -619,6 +619,38 @@ body.cursor-active #cur-label { opacity: 1; }
   border-radius: 6px;
   color: var(--accent);
 }
+/* Skills grid layout */
+.skill-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 16px;
+  margin-top: 1rem;
+}
+
+.skill-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border-radius: 10px;
+  background: rgba(255,255,255,0.03);
+  transition: 0.3s ease;
+}
+
+.skill-item img {
+  width: 22px;
+  height: 22px;
+}
+
+.skill-item span {
+  font-size: 14px;
+  color: #eaeaea;
+}
+
+.skill-item:hover {
+  transform: translateY(-3px);
+  background: rgba(77, 208, 225, 0.1);
+}
 /* Skill logo styling */
 .skill-logo {
   vertical-align: middle;
