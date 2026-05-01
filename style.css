@@ -858,34 +858,52 @@ body, p, .pi-content p, .about-text-block p, .hero-desc {
 }
 
 /* -------------------------------------------------
-   Global overflow safety (applies to all elements)
-   ------------------------------------------------- */
-html, body { overflow-x: hidden; }
-* { max-width: 100%; box-sizing: border-box; }
+  /* -------------------------------------------------
+     Global overflow safety (desktop default)
+     ------------------------------------------------- */
+  html, body { overflow-x: hidden; }
 
-/* Containers that may cause overflow */
-.container,
-section,
-.projects,
-.proj-wrapper {
-  width: 100%;
-  max-width: 100%;
-  overflow-x: hidden;
-  padding-left: 16px;
-  padding-right: 16px;
-}
-
-/* Mobile overrides to force no overflow */
-@media (max-width: 768px) {
-  * { max-width: 100% !important; }
-  .projects,
-  .proj-wrapper,
+  /* Default desktop layout for project items */
   .proj-item {
-    width: 100% !important;
-    margin: 0 !important;
-    padding: 12px !important;
+    display: grid;
+    grid-template-columns: 64px 1fr 380px;
+    gap: 40px;
+    align-items: start;
+    border: 1px solid var(--border);
+    padding: 40px 40px 40px 32px;
+    background: rgba(255,255,255,0.04);
+    border-radius: 24px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+    transition: border-color .4s cubic-bezier(0.16, 1, 0.3, 1), background .4s cubic-bezier(0.16, 1, 0.3, 1), transform .4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow .4s cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative;
+    overflow: hidden;
+    transform: translateZ(0);
   }
-}
+
+  /* Tablet view (≤1024px) – single column grid */
+  @media (max-width: 1024px) {
+    .proj-item {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+      padding: 24px;
+    }
+  }
+
+  /* Mobile view (≤768px) – flex column layout */
+  @media (max-width: 768px) {
+    .proj-item {
+      display: flex !important;
+      flex-direction: column !important;
+      width: 100% !important;
+      padding: 16px !important;
+      gap: 16px !important;
+    }
+    .proj-item .pi-content,
+    .proj-item .pi-visual {
+      width: 100% !important;
+    }
+  }
 
 /* Mobile fixes */
 @media (max-width: 768px) {
