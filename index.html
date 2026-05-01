@@ -407,8 +407,16 @@
   <section id="projects" class="section section-alt reveal">
     <div class="container">
       <div class="sec-header">
-        <span class="sec-num">04</span>
-        <h2 class="sec-title">Selected Work</h2>
+        <div class="projects-heading">
+          <span class="sec-num">04</span>
+          <h2 class="sec-title">Selected Work</h2>
+        </div>
+        <button class="chat-toggle" id="chatToggle" type="button" aria-label="Open Ask Sudarshan AI" data-cursor-label="Chat">
+          <svg class="chat-icon" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M21 11.5a8.4 8.4 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.4 8.4 0 0 1-3.8-.9L3 21l1.9-5.7A8.4 8.4 0 0 1 4 11.5 8.5 8.5 0 0 1 12.5 3 8.5 8.5 0 0 1 21 11.5Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span>Ask AI</span>
+        </button>
       </div>
       <p class="sec-sub">A curated portfolio section is being prepared. Selected work and GitHub links will be available soon.</p>
 
@@ -457,6 +465,41 @@
           <div class="pi-num">02</div>
           <div class="pi-content">
             <div class="pi-top">
+              <h3>Portfolio RAG Chatbot</h3>
+              <div class="pi-badges">
+                <span class="pi-badge ai">AI / RAG</span>
+              </div>
+            </div>
+            <p>Problem: Recruiters and visitors cannot easily explore my skills, projects, and experience interactively.<br>Solution: Built a context-aware AI chatbot using Groq API and RAG that answers questions about my portfolio, projects, skills, and experience in real-time.</p>
+            <div class="pi-stack">
+              <span>JavaScript</span><span>Node.js</span><span>Groq API</span><span>RAG</span><span>HTML / CSS</span>
+            </div>
+            <a href="https://github.com/peddakotlasudarshan20/my-own-rag" target="_blank" class="pi-link" data-cursor-label="GitHub">
+              View on GitHub
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2v6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </a>
+            <a href="https://my-own-rag.vercel.app/" target="_blank" class="pi-link btn-primary" data-cursor-label="Live Demo">
+              Live Demo
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 2h8v8H2z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </a>
+          </div>
+          <div class="pi-visual">
+            <div class="piv-terminal">
+              <div class="piv-bar dark"><span class="tb-dot r"></span><span class="tb-dot y"></span><span class="tb-dot g"></span></div>
+              <div class="piv-code">
+                <div class="pc-line"><span class="pc-kw">const</span> <span class="pc-id">rag</span> <span class="pc-op">=</span> <span class="pc-str">"portfolio"</span></div>
+                <div class="pc-line"><span class="pc-fn">askAI</span><span class="pc-op">(</span><span class="pc-str">"projects"</span><span class="pc-op">)</span></div>
+                <div class="pc-line pc-out"><span class="pc-acc">→</span> Answer streamed</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 3 -->
+        <div class="proj-item reveal-item" data-delay="0">
+          <div class="pi-num">03</div>
+          <div class="pi-content">
+            <div class="pi-top">
               <h3>AI Text Summarizer</h3>
               <div class="pi-badges">
                 <span class="pi-badge ai">AI / NLP</span>
@@ -483,9 +526,9 @@
           </div>
         </div>
 
-        <!-- Project 3 -->
-        <div class="proj-item reveal-item" data-delay="0">
-          <div class="pi-num">03</div>
+        <!-- Project 4 -->
+        <div class="proj-item proj-item-flip reveal-item" data-delay="80">
+          <div class="pi-num">04</div>
           <div class="pi-content">
             <div class="pi-top">
               <h3>Mind Bloom</h3>
@@ -520,9 +563,9 @@
           </div>
         </div>
 
-        <!-- Project 4 -->
-        <div class="proj-item proj-item-flip reveal-item" data-delay="80">
-          <div class="pi-num">04</div>
+        <!-- Project 5 -->
+        <div class="proj-item reveal-item" data-delay="0">
+          <div class="pi-num">05</div>
           <div class="pi-content">
             <div class="pi-top">
               <h3>Social Media</h3>
@@ -556,9 +599,9 @@
           </div>
         </div>
 
-        <!-- Project 5 -->
-        <div class="proj-item reveal-item" data-delay="0">
-          <div class="pi-num">05</div>
+        <!-- Project 6 -->
+        <div class="proj-item proj-item-flip reveal-item" data-delay="80">
+          <div class="pi-num">06</div>
           <div class="pi-content">
             <div class="pi-top">
               <h3>FLAMES Compatibility Checker</h3>
@@ -791,6 +834,23 @@
       </div>
     </div>
   </footer>
+
+  <div class="chat-assistant" id="chatAssistant">
+    <div class="chat-panel" id="chatPanel" aria-hidden="true">
+      <div class="chat-header">
+        <div>
+          <p class="chat-title">Ask Sudarshan AI</p>
+          <p class="chat-subtitle">Recruiter-friendly assistant</p>
+        </div>
+        <button class="chat-close" id="chatClose" type="button" aria-label="Close chat">×</button>
+      </div>
+      <div class="chat-messages" id="chatMessages" role="log" aria-live="polite"></div>
+      <form class="chat-form" id="chatForm">
+        <textarea id="chatInput" name="chatInput" rows="1" placeholder="Ask me about projects, skills, or hiring..." autocomplete="off"></textarea>
+        <button class="chat-send" id="chatSend" type="submit">Send</button>
+      </form>
+    </div>
+  </div>
 
   <script src="script.js?v=2" defer></script>
 

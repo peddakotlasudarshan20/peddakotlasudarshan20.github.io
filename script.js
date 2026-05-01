@@ -421,3 +421,119 @@ function initActiveNav() {
     });
   });
 })();
+
+/* ── CHAT ASSISTANT ── */
+const chatApiUrl = "https://my-own-rag.vercel.app/api/chat";
+let chatLoading = false;
+
+function chatScrollBottom() {
+  const container = document.getElementById('chatMessages');
+  if (!container) return;
+  container.scrollTop = container.scrollHeight;
+}
+
+function appendChatBubble(text, role) {
+  const container = document.getElementById('chatMessages');
+  if (!container) return;
+  const bubble = document.createElement('div');
+  bubble.className = `chat-bubble ${role}`;
+  bubble.textContent = text;
+  container.appendChild(bubble);
+  chatScrollBottom();
+  return bubble;
+}
+
+function removeTypingIndicator() {
+  const typing = document.querySelector('.chat-bubble.typing');
+  if (typing) typing.remove();
+}
+
+function setChatLoadingState(isLoading) {
+  const input = document.getElementById('chatInput');
+  const send = document.getElementById('chatSend');
+  if (!input || !send) return;
+  chatLoading = isLoading;
+  input.disabled = isLoading;
+  send.disabled = isLoading;
+  send.textContent = isLoading ? 'Sending…' : 'Send';
+}
+
+function getChatResponseText(data) {
+  if (!data) return null;
+  if (typeof data === 'string') return data;
+  return data.response || data.answer || data.message || data.result || data.output || null;
+}
+
+async function sendChatMessage(message) {
+  if (chatLoading) return;
+  setChatLoadingState(true);
+  removeTypingIndicator();
+  appendChatBubble('Typing...', 'assistant').classList.add('typing');
+
+  try {
+    const response = await fetch(chatApiUrl, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ message }),
+    });
+
+    if (!response.ok) {
+      throw new Error(`API error ${response.status}`);
+    }
+
+    const data = await response.json();
+    const reply = getChatResponseText(data) || 'I could not fetch a proper response. Please try again.';
+    removeTypingIndicator();
+    appendChatBubble(reply, 'assistant');
+  } catch (error) {
+    removeTypingIndicator();
+    appendChatBubble('Sorry, something went wrong. Please try again later.', 'assistant');
+    console.error('Chat assistant error:', error);
+  } finally {
+    setChatLoadingState(false);
+  }
+}
+
+function handleChatSubmit(event) {
+  event.preventDefault();
+  if (chatLoading) return;
+  const input = document.getElementById('chatInput');
+  if (!input) return;
+  const value = input.value.trim();
+  if (!value) return;
+  appendChatBubble(value, 'user');
+  input.value = '';
+  sendChatMessage(value);
+}
+
+function initChatAssistant() {
+  const toggle = document.getElementById('chatToggle');
+  const panel = document.getElementById('chatPanel');
+  const close = document.getElementById('chatClose');
+  const form = document.getElementById('chatForm');
+  const input = document.getElementById('chatInput');
+  if (!toggle || !panel || !close || !form || !input) return;
+
+  function setOpen(open) {
+    panel.classList.toggle('open', open);
+    panel.setAttribute('aria-hidden', String(!open));
+  }
+
+  toggle.addEventListener('click', () => setOpen(!panel.classList.contains('open')));
+  close.addEventListener('click', () => setOpen(false));
+
+  document.addEventListener('click', event => {
+    if (!panel.classList.contains('open')) return;
+    if (panel.contains(event.target) || toggle.contains(event.target)) return;
+    setOpen(false);
+  });
+
+  form.addEventListener('submit', handleChatSubmit);
+  input.addEventListener('keydown', event => {
+    if (event.key !== 'Enter' || event.shiftKey) return;
+    event.preventDefault();
+    handleChatSubmit(event);
+  });
+}
+
+document.addEventListener('DOMContentLoaded', initChatAssistant);
