@@ -619,6 +619,11 @@ body.cursor-active #cur-label { opacity: 1; }
   border-radius: 6px;
   color: var(--accent);
 }
+/* Skill logo styling */
+.skill-logo {
+  vertical-align: middle;
+  margin-right: 0.5rem;
+}
 .sk-items { display: flex; flex-direction: column; gap: 12px; }
 .sk-item { display: flex; flex-direction: column; gap: 10px; }
 .sk-head {
