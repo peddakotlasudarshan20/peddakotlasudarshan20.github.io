@@ -2301,3 +2301,112 @@ body {
     display: flex !important;
   }
 }
+
+/* AI portfolio refresh */
+.skills-constellation {
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+}
+
+.skill-grid {
+  grid-template-columns: repeat(auto-fit, minmax(96px, 1fr));
+  gap: 14px;
+  margin-top: 0;
+}
+
+.skill-item {
+  min-height: 104px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  text-align: center;
+  padding: 16px 12px;
+  border: 1px solid rgba(255,255,255,0.07);
+}
+
+.skill-item i,
+.skill-item img {
+  width: auto;
+  height: auto;
+  font-size: 1.75rem;
+  line-height: 1;
+}
+
+.skill-item .skill-fa {
+  color: var(--accent);
+}
+
+.skill-item span {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  line-height: 1.35;
+}
+
+.skill-item:hover {
+  transform: translateY(-4px) scale(1.02);
+  border-color: rgba(77,208,225,0.3);
+}
+
+.skill-item:hover .skill-fa {
+  color: var(--accent2);
+}
+
+.proj-list .proj-item {
+  order: initial !important;
+}
+
+.proj-list .pi-num {
+  font-size: 11px !important;
+}
+
+.proj-list .pi-num::before {
+  content: none !important;
+}
+
+.proj-item-featured {
+  border-color: rgba(77,208,225,0.46);
+  background:
+    linear-gradient(135deg, rgba(77,208,225,0.12), rgba(0,102,255,0.06)),
+    rgba(255,255,255,0.045);
+  box-shadow: 0 22px 70px rgba(77,208,225,0.16), inset 0 0 0 1px rgba(255,255,255,0.04);
+}
+
+.proj-item-featured:hover {
+  transform: translateY(-8px);
+}
+
+.proj-list .proj-item:nth-child(2):not(.proj-item-featured) {
+  border-color: var(--border);
+  background: transparent;
+  box-shadow: none;
+  transform: none;
+}
+
+.proj-list .proj-item:nth-child(2):not(.proj-item-featured):hover {
+  border-color: rgba(77,208,225,0.4);
+  background: rgba(77,208,225,0.03);
+  box-shadow: 0 20px 48px rgba(77,208,225,0.15);
+  transform: translateY(-6px);
+}
+
+@media (max-width: 768px) {
+  .skill-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .skill-item {
+    min-height: 96px;
+    padding: 14px 8px;
+  }
+
+  .proj-item-featured:hover {
+    transform: none !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .skill-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
