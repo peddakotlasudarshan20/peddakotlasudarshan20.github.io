@@ -409,9 +409,12 @@ function initActiveNav() {
 (function initTilt() {
   document.querySelectorAll(".proj-item").forEach(card => {
     card.addEventListener("mousemove", e => {
+      if (window.matchMedia("(max-width: 768px), (prefers-reduced-motion: reduce)").matches) return;
       const r = card.getBoundingClientRect();
       const x = (e.clientX - r.left) / r.width  - 0.5;
       const y = (e.clientY - r.top)  / r.height - 0.5;
+      card.style.setProperty("--mx", `${(x + 0.5) * 100}%`);
+      card.style.setProperty("--my", `${(y + 0.5) * 100}%`);
       card.style.transform     = `perspective(1000px) rotateY(${x*3}deg) rotateX(${-y*3}deg) translateZ(8px)`;
       card.style.transition    = "transform 0.04s linear";
     });
@@ -507,24 +510,30 @@ function handleChatSubmit(event) {
 }
 
 function initChatAssistant() {
-  const toggle = document.getElementById('chatToggle');
+  const toggles = document.querySelectorAll('[data-chat-toggle]');
   const panel = document.getElementById('chatPanel');
   const close = document.getElementById('chatClose');
   const form = document.getElementById('chatForm');
   const input = document.getElementById('chatInput');
-  if (!toggle || !panel || !close || !form || !input) return;
+  if (!toggles.length || !panel || !close || !form || !input) return;
 
   function setOpen(open) {
     panel.classList.toggle('open', open);
     panel.setAttribute('aria-hidden', String(!open));
+    if (open) setTimeout(() => input.focus(), 80);
   }
 
-  toggle.addEventListener('click', () => setOpen(!panel.classList.contains('open')));
+  toggles.forEach(toggle => {
+    toggle.addEventListener('click', event => {
+      event.stopPropagation();
+      setOpen(!panel.classList.contains('open'));
+    });
+  });
   close.addEventListener('click', () => setOpen(false));
 
   document.addEventListener('click', event => {
     if (!panel.classList.contains('open')) return;
-    if (panel.contains(event.target) || toggle.contains(event.target)) return;
+    if (panel.contains(event.target) || event.target.closest('[data-chat-toggle]')) return;
     setOpen(false);
   });
 
