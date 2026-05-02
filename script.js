@@ -1,11 +1,11 @@
 /* =====================================================
-   PEDDAKOTLA SUDARSHAN — PORTFOLIO JS
+   PEDDAKOTLA SUDARSHAN - PORTFOLIO JS
    Three.js Hero | Typing | Scroll Reveals | Cursor||
    ===================================================== */
 
 "use strict";
 
-/* ── LOADER ── */
+/* -- LOADER -- */
 (function initLoader() {
   const el     = document.getElementById("loader");
   const bar    = document.getElementById("ldBar");
@@ -32,7 +32,7 @@ function startReveal() {
   setTimeout(initTyping, 1400);
 }
 
-/* ── THREE.JS HERO ── */
+/* -- THREE.JS HERO -- */
 (function initHero() {
   const canvas = document.getElementById("heroCanvas");
   if (!canvas || typeof THREE === "undefined") return;
@@ -135,7 +135,7 @@ function startReveal() {
   })();
 })();
 
-/* ── CUSTOM CURSOR ── */
+/* -- CUSTOM CURSOR -- */
 (function initCursor() {
   const dot    = document.getElementById("cur-dot");
   const ring   = document.getElementById("cur-ring");
@@ -175,7 +175,7 @@ function startReveal() {
   });
 })();
 
-/* ── NAV ── */
+/* -- NAV -- */
 (function initNav() {
   const nav  = document.getElementById("nav");
   const ham  = document.getElementById("navHam");
@@ -198,7 +198,7 @@ function startReveal() {
   });
 })();
 
-/* ── TYPING EFFECT ── */
+/* -- TYPING EFFECT -- */
 function initTyping() {
   const el = document.getElementById("typed");
   if (!el) return;
@@ -226,7 +226,7 @@ function initTyping() {
   tick();
 }
 
-/* ── SCROLL REVEALS ── */
+/* -- SCROLL REVEALS -- */
 function initReveal() {
   const items = document.querySelectorAll(".reveal-item");
 
@@ -282,7 +282,7 @@ function initScrollProgress() {
 }
 
 /* -------------------------------------------------
-   SCROLL‑TO‑TOP BUTTON
+   SCROLL-TO-TOP BUTTON
    ------------------------------------------------- */
 function initToTop() {
   const btn = document.getElementById('toTop');
@@ -309,7 +309,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initToTop();
 });
 
-/* ── COUNTER ANIMATION ── */
+/* -- COUNTER ANIMATION -- */
 (function initCounters() {
   const items = document.querySelectorAll(".ss-num[data-target]");
 
@@ -339,7 +339,7 @@ document.addEventListener('DOMContentLoaded', () => {
   items.forEach(el => io.observe(el));
 })();
 
-/* ── ACTIVE NAV ── */
+/* -- ACTIVE NAV -- */
 function initActiveNav() {
   const sections = document.querySelectorAll("section[id]");
   const links    = document.querySelectorAll(".nl");
@@ -356,7 +356,7 @@ function initActiveNav() {
   sections.forEach(s => io.observe(s));
 }
 
-/* ── SMOOTH SCROLL ── */
+/* -- SMOOTH SCROLL -- */
 (function initSmoothScroll() {
   document.querySelectorAll('a[href^="#"]').forEach(a => {
     a.addEventListener("click", e => {
@@ -367,7 +367,7 @@ function initActiveNav() {
   });
 })();
 
-/* ── CONTACT FORM ── */
+/* -- CONTACT FORM -- */
 (function initForm() {
   const form = document.getElementById("contactForm");
   const msg  = document.getElementById("cfMsg");
@@ -382,13 +382,13 @@ function initActiveNav() {
   form.addEventListener("submit", e => {
     e.preventDefault();
     const txt = btn.querySelector(".cfs-text");
-    txt.textContent = "Sending…";
+    txt.textContent = "Sending...";
     btn.disabled = true;
     msg.classList.remove("show", "error");
 
     emailjs.sendForm("service_m41286a", "template_1idwrdx", form)
       .then(() => {
-        msg.textContent = "✓ Message sent! I'll get back to you soon.";
+        msg.textContent = "Message sent! I'll get back to you soon.";
         msg.classList.add("show");
         form.reset();
         txt.textContent = "Send Message";
@@ -405,7 +405,7 @@ function initActiveNav() {
   });
 })();
 
-/* ── TILT ON PROJECT ITEMS ── */
+/* -- TILT ON PROJECT ITEMS -- */
 (function initTilt() {
   document.querySelectorAll(".proj-item").forEach(card => {
     card.addEventListener("mousemove", e => {
@@ -425,7 +425,7 @@ function initActiveNav() {
   });
 })();
 
-/* ── CHAT ASSISTANT ── */
+/* -- CHAT ASSISTANT -- */
 const chatApiUrl = "https://my-own-rag.vercel.app/api/chat";
 let chatLoading = false;
 
@@ -458,7 +458,7 @@ function setChatLoadingState(isLoading) {
   chatLoading = isLoading;
   input.disabled = isLoading;
   send.disabled = isLoading;
-  send.textContent = isLoading ? 'Sending…' : 'Send';
+  send.textContent = isLoading ? 'Sending...' : 'Send';
 }
 
 function getChatResponseText(data) {

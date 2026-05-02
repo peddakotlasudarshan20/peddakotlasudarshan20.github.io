@@ -1,9 +1,9 @@
 /* =====================================================
-   PEDDAKOTLA SUDARSHAN — PORTFOLIO
-   Editorial Brutalist · Dark · Acid Green Accents
+   PEDDAKOTLA SUDARSHAN - PORTFOLIO
+   Editorial Brutalist - Dark - Acid Green Accents
    ===================================================== */
 
-/* ── VARIABLES ── */
+/* -- VARIABLES -- */
 :root {
   --bg:        #080808;
   --bg2:       #0f0f0f;
@@ -31,7 +31,7 @@
   --ease: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* ── RESET ── */
+/* -- RESET -- */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; font-size: 16px; }
 body {
@@ -56,13 +56,13 @@ input, textarea {
   width: 100%;
 }
 
-/* ── SCROLLBAR ── */
+/* -- SCROLLBAR -- */
 ::-webkit-scrollbar { width: 3px; }
 ::-webkit-scrollbar-track { background: var(--bg); }
 ::-webkit-scrollbar-thumb { background: var(--accent); }
 ::selection { background: rgba(0,255,135,0.2); }
 
-/* ── NOISE ── */
+/* -- NOISE -- */
 .noise {
   position: fixed; inset: 0; z-index: 9998; pointer-events: none;
   opacity: 0.025;
@@ -70,7 +70,7 @@ input, textarea {
   background-size: 200px 200px;
 }
 
-/* ── CURSOR ── */
+/* -- CURSOR -- */
 #cur-dot {
   width: 8px; height: 8px;
   background: var(--accent);
@@ -104,7 +104,7 @@ body.cursor-active #cur-ring { width: 56px; height: 56px; border-color: var(--ac
 body.cursor-active #cur-dot  { width: 14px; height: 14px; }
 body.cursor-active #cur-label { opacity: 1; }
 
-/* ── LOADER ── */
+/* -- LOADER -- */
 #loader {
   position: fixed; inset: 0;
   background: var(--bg);
@@ -147,7 +147,7 @@ body.cursor-active #cur-label { opacity: 1; }
   text-transform: uppercase;
 }
 
-/* ── NAV ── */
+/* -- NAV -- */
 #nav {
   position: fixed; top: 0; left: 0; right: 0; z-index: 100;
   display: flex; align-items: center; gap: 32px;
@@ -239,7 +239,7 @@ body.cursor-active #cur-label { opacity: 1; }
 }
 .mm-link:hover { color: var(--accent); }
 
-/* ── HERO ── */
+/* -- HERO -- */
 #hero {
   min-height: 100vh;
   position: relative;
@@ -436,7 +436,7 @@ body.cursor-active #cur-label { opacity: 1; }
   transform: rotate(180deg);
 }
 
-/* ── SHARED SECTION ── */
+/* -- SHARED SECTION -- */
 .section { padding: 100px 0; }
 .section-alt { background: var(--bg2); }
 .container { max-width: 1200px; margin: 0 auto; padding: 0 48px; }
@@ -486,7 +486,7 @@ body.cursor-active #cur-label { opacity: 1; }
   transform: translateY(0);
 }
 
-/* ── ABOUT ── */
+/* -- ABOUT -- */
 .about-layout {
   display: grid;
   grid-template-columns: 260px 1fr;
@@ -599,7 +599,7 @@ body.cursor-active #cur-label { opacity: 1; }
 .af-item a { color: var(--muted); transition: color .2s; }
 .af-item a:hover { color: var(--accent); }
 
-/* ── SKILLS ── */
+/* -- SKILLS -- */
 .skills-constellation {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -706,7 +706,7 @@ body.cursor-active #cur-label { opacity: 1; }
 }
 .skt:hover { color: var(--accent); border-color: rgba(77,208,225,0.4); background: rgba(77,208,225,0.05); }
 
-/* ── TIMELINE ── */
+/* -- TIMELINE -- */
 .timeline { display: flex; flex-direction: column; gap: 0; }
 .tl-entry {
   display: grid;
@@ -796,7 +796,7 @@ body.cursor-active #cur-label { opacity: 1; }
   position: relative;
 }
 .tle-points li::before {
-  content: '—';
+  content: '-';
   position: absolute; left: 0;
   color: var(--accent);
   font-family: var(--font-mono);
@@ -814,7 +814,7 @@ body.cursor-active #cur-label { opacity: 1; }
   border-radius: 4px;
 }
 
-/* ── PROJECTS ── */
+/* -- PROJECTS -- */
 .proj-list { display: flex; flex-direction: column; gap: 2px; }
 .proj-item {
   display: grid;
@@ -927,7 +927,7 @@ body, p, .pi-content p, .about-text-block p, .hero-desc {
     transform: translateZ(0);
   }
 
-  /* Tablet view (≤1024px) – single column grid */
+  /* Tablet view (max 1024px) - single column grid */
   @media (max-width: 1024px) {
     .proj-item {
       display: grid;
@@ -937,7 +937,7 @@ body, p, .pi-content p, .about-text-block p, .hero-desc {
     }
   }
 
-  /* Mobile view (≤768px) – flex column layout */
+  /* Mobile view (max 768px) - flex column layout */
   @media (max-width: 768px) {
     .proj-item {
       display: flex !important;
@@ -975,7 +975,7 @@ body, p, .pi-content p, .about-text-block p, .hero-desc {
 }
 
 /* -------------------------------------------------
-   Mobile‑First Responsive Design (Full Implementation)
+   Mobile-First Responsive Design (Full Implementation)
    ------------------------------------------------- */
 
 /* Global reset for mobile */
@@ -1230,7 +1230,7 @@ body, p, .pi-content p, .about-text-block p, .hero-desc {
 .proj-item-flip .pi-visual { order: 2; }
 .proj-item-flip .pi-content { order: 3; }
 
-/* ── ACTIVITIES ── */
+/* -- ACTIVITIES -- */
 .act-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -1310,7 +1310,7 @@ body, p, .pi-content p, .about-text-block p, .hero-desc {
   background: var(--dim);
 }
 
-/* ── CONTACT ── */
+/* -- CONTACT -- */
 .contact-layout {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -1423,7 +1423,7 @@ body, p, .pi-content p, .about-text-block p, .hero-desc {
 .cf-msg.show { opacity: 1; }
 .cf-msg.error { color: var(--warn); }
 
-/* ── FOOTER ── */
+/* -- FOOTER -- */
 #footer {
   background: var(--bg);
   border-top: 1px solid var(--border);
@@ -1492,7 +1492,7 @@ body, p, .pi-content p, .about-text-block p, .hero-desc {
 }
 .back-to-top:hover { color: var(--accent); }
 
-/* ── KEYFRAMES ── */
+/* -- KEYFRAMES -- */
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(20px); }
   to   { opacity: 1; transform: translateY(0); }
@@ -1508,7 +1508,7 @@ html.loaded {
   animation: fadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-/* ── HERO GRID / CARD (modern layout) ── */
+/* -- HERO GRID / CARD (modern layout) -- */
 .hero-grid {
   display: grid;
   grid-template-columns: 1fr 340px;
@@ -1549,7 +1549,7 @@ html.loaded {
   .hero-card { order: 2; }
 }
 
-/* ── RESPONSIVE ── */
+/* -- RESPONSIVE -- */
 @media (max-width: 1024px) {
   .proj-item { grid-template-columns: 48px 1fr; }
   .proj-item .pi-visual { display: none; }
@@ -1565,7 +1565,7 @@ html.loaded {
    Comprehensive Mobile-First Responsive Design
    ------------------------------------------------- */
 
-/* Tablet & Smaller (≤768px) */
+/* Tablet and smaller (max 768px) */
 @media (max-width: 768px) {
   /* Navigation */
   #nav { padding: 16px 20px; }
@@ -1636,7 +1636,7 @@ html.loaded {
   .act-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
-/* Mobile (≤480px) */
+/* Mobile (max 480px) */
 @media (max-width: 480px) {
   html { font-size: 16px; }
   .container { padding: 0 16px; }
@@ -1682,7 +1682,7 @@ html.loaded {
   .sk-name { font-size: 0.9rem; }
 }
 
-/* Mobile small phones (≤480px) additional tweaks */
+/* Mobile small phones (max 480px) additional tweaks */
 @media (max-width: 480px) {
   .tl-entry { grid-template-columns: 60px 20px 1fr; gap: 16px; }
   .act-grid { grid-template-columns: 1fr; }
