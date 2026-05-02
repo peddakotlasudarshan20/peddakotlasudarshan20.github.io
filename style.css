@@ -2032,3 +2032,272 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 
 /* Small performance hints */
 .proj-item, .sk-group, .act-card, .pi-content { will-change: transform, opacity; }
+
+/* Recruiter-focused project polish */
+body {
+  font-size: 16px;
+  line-height: 1.65;
+}
+
+#projects .sec-header {
+  margin-bottom: 18px;
+}
+
+#projects .sec-sub {
+  max-width: 680px;
+  margin-bottom: 34px;
+  color: rgba(246, 248, 250, 0.74);
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+.chat-cta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 7px;
+}
+
+.chat-hint {
+  max-width: 260px;
+  color: var(--muted);
+  font-size: 0.78rem;
+  line-height: 1.45;
+  text-align: right;
+}
+
+.proj-list {
+  gap: 22px;
+}
+
+.proj-list .proj-item:nth-child(2) { order: 1; }
+.proj-list .proj-item:nth-child(1) { order: 2; }
+.proj-list .proj-item:nth-child(5) { order: 3; }
+.proj-list .proj-item:nth-child(3) { order: 4; }
+.proj-list .proj-item:nth-child(4) { order: 5; }
+.proj-list .proj-item:nth-child(6) { display: none; }
+
+.proj-list .proj-item:nth-child(2) .pi-num::before { content: "01"; }
+.proj-list .proj-item:nth-child(1) .pi-num::before { content: "02"; }
+.proj-list .proj-item:nth-child(5) .pi-num::before { content: "03"; }
+.proj-list .proj-item:nth-child(3) .pi-num::before { content: "04"; }
+.proj-list .proj-item:nth-child(4) .pi-num::before { content: "05"; }
+
+.proj-list .pi-num {
+  font-size: 0;
+}
+
+.proj-list .pi-num::before {
+  font-size: 11px;
+}
+
+.proj-item {
+  border-radius: 14px;
+}
+
+.proj-item:nth-child(2) {
+  border-color: rgba(77,208,225,0.46);
+  background:
+    linear-gradient(135deg, rgba(77,208,225,0.12), rgba(0,102,255,0.06)),
+    rgba(255,255,255,0.045);
+  box-shadow: 0 22px 70px rgba(77,208,225,0.16), inset 0 0 0 1px rgba(255,255,255,0.04);
+  transform: scale(1.01);
+}
+
+.proj-item:nth-child(2):hover {
+  transform: translateY(-8px) scale(1.01);
+}
+
+.pi-top {
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.pi-content h3 {
+  font-size: clamp(1.3rem, 2vw, 1.65rem);
+  line-height: 1.2;
+  color: var(--text);
+}
+
+.pi-badges {
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.pi-badge {
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.pi-content p {
+  color: rgba(246, 248, 250, 0.72);
+  font-size: 0.98rem;
+  line-height: 1.78;
+  margin-bottom: 12px;
+}
+
+.pi-content p strong {
+  color: var(--text);
+  font-weight: 700;
+}
+
+.pi-stack {
+  gap: 8px;
+  margin: 18px 0 24px;
+}
+
+.pi-stack span {
+  color: rgba(246, 248, 250, 0.78);
+  background: rgba(255,255,255,0.055);
+  border-color: rgba(255,255,255,0.12);
+  padding: 5px 10px;
+}
+
+.pi-link {
+  min-height: 38px;
+  padding: 0 13px;
+  border: 1px solid rgba(77,208,225,0.26);
+  border-radius: 8px;
+  transition: transform .22s var(--ease), border-color .22s var(--ease), background .22s var(--ease), gap .22s var(--ease);
+}
+
+.pi-link + .pi-link {
+  margin-left: 10px;
+}
+
+.pi-link:hover {
+  transform: translateY(-2px) scale(1.02);
+  background: rgba(77,208,225,0.08);
+  border-color: rgba(77,208,225,0.48);
+}
+
+.btn-primary,
+.btn-outline,
+.chat-toggle,
+.chat-send,
+.cf-submit {
+  transition: transform .22s var(--ease), box-shadow .22s var(--ease), background .22s var(--ease), border-color .22s var(--ease), filter .22s var(--ease);
+}
+
+.btn-primary:hover,
+.btn-outline:hover,
+.cf-submit:hover {
+  transform: translateY(-2px) scale(1.02);
+}
+
+.chat-suggestions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 12px 16px 0;
+}
+
+.chat-suggestions button {
+  min-height: 34px;
+  padding: 0 11px;
+  border-radius: 999px;
+  background: rgba(77,208,225,0.08);
+  border: 1px solid rgba(77,208,225,0.18);
+  color: rgba(246,248,250,0.82);
+  font-size: 0.78rem;
+  transition: transform .2s var(--ease), background .2s var(--ease), border-color .2s var(--ease);
+}
+
+.chat-suggestions button:hover {
+  transform: translateY(-1px);
+  background: rgba(77,208,225,0.14);
+  border-color: rgba(77,208,225,0.36);
+}
+
+@media (max-width: 1024px) {
+  .proj-list {
+    gap: 18px;
+  }
+
+  .proj-item:nth-child(2) {
+    transform: none;
+  }
+}
+
+@media (max-width: 768px) {
+  #projects .sec-header {
+    margin-bottom: 12px;
+  }
+
+  .chat-cta {
+    align-items: stretch;
+    width: 100%;
+  }
+
+  .chat-hint {
+    max-width: 100%;
+    text-align: left;
+  }
+
+  .pi-top {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .pi-badges {
+    justify-content: flex-start;
+  }
+
+  .pi-link,
+  .pi-link.btn-primary {
+    display: inline-flex !important;
+    justify-content: center;
+    width: auto !important;
+    margin-top: 8px;
+  }
+
+  .pi-link + .pi-link {
+    margin-left: 0;
+  }
+
+  .proj-item:nth-child(2):hover {
+    transform: none !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .pi-content p {
+    font-size: 0.94rem;
+    line-height: 1.72;
+  }
+
+  .chat-suggestions {
+    padding-top: 10px;
+  }
+
+  .chat-suggestions button {
+    width: 100%;
+  }
+}
+
+/* Final project ranking: keep every project visible */
+.proj-list .proj-item:nth-child(2) { order: 1; }
+.proj-list .proj-item:nth-child(1) { order: 2; }
+.proj-list .proj-item:nth-child(4) { order: 3; }
+.proj-list .proj-item:nth-child(5) { order: 4; }
+.proj-list .proj-item:nth-child(3) { order: 5; }
+.proj-list .proj-item:nth-child(7) { order: 6; }
+.proj-list .proj-item:nth-child(6) {
+  display: grid;
+  order: 7;
+}
+
+.proj-list .proj-item:nth-child(2) .pi-num::before { content: "01"; }
+.proj-list .proj-item:nth-child(1) .pi-num::before { content: "02"; }
+.proj-list .proj-item:nth-child(4) .pi-num::before { content: "03"; }
+.proj-list .proj-item:nth-child(5) .pi-num::before { content: "04"; }
+.proj-list .proj-item:nth-child(3) .pi-num::before { content: "05"; }
+.proj-list .proj-item:nth-child(7) .pi-num::before { content: "06"; }
+.proj-list .proj-item:nth-child(6) .pi-num::before { content: "07"; }
+
+@media (max-width: 1024px) {
+  .proj-list .proj-item:nth-child(6) {
+    display: flex !important;
+  }
+}

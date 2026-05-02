@@ -529,6 +529,16 @@ function initChatAssistant() {
   });
 
   form.addEventListener('submit', handleChatSubmit);
+  document.querySelectorAll('[data-chat-prompt]').forEach(button => {
+    button.addEventListener('click', () => {
+      if (chatLoading) return;
+      const prompt = button.dataset.chatPrompt;
+      if (!prompt) return;
+      appendChatBubble(prompt, 'user');
+      input.value = '';
+      sendChatMessage(prompt);
+    });
+  });
   input.addEventListener('keydown', event => {
     if (event.key !== 'Enter' || event.shiftKey) return;
     event.preventDefault();
